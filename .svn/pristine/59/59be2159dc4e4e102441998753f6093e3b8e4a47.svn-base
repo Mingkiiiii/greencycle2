@@ -1,0 +1,16 @@
+package com.greencycle.my.game.dao;
+
+import java.util.List;
+
+import org.apache.ibatis.annotations.Mapper;
+
+import com.greencycle.my.game.vo.DamainfoVO;
+
+
+@Mapper
+public interface DamainfoDAO {
+	// 게시글 조회
+	public DamainfoVO getDamainfo(String userId);
+	
+	
+}

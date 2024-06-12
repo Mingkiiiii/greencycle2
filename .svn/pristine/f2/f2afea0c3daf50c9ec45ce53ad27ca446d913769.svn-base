@@ -1,0 +1,576 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Game Main</title>
+<link rel="stylesheet" href="<c:url value='/css/style_game.css' />">
+<link rel="stylesheet" type="text/css" href="<c:url value='/assets/css/style_game.css' />">
+<style>
+@font-face {
+    font-family: 'PFStardust';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/PFStardust.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body, h1, p, .character-label span {
+    font-family: 'PFStardust', sans-serif;
+    color: white; /* 기본 글씨 색상은 흰색으로 설정 */
+}
+
+.menu_btn:hover {
+    transform: translateY(-10%);
+}
+
+#select-button {
+    z-index: 3; /* 컨텐츠가 배경 이미지 위에 표시되도록 z-index 설정 */
+}
+
+.character-label {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 10px; /* 캐릭터들 사이의 간격 */
+    width: 100px;
+    height: 200px;
+    color: black !important;
+}
+
+.character-selection-content form {
+    display: flex;
+    justify-content: center;
+    flex-wrap: nowrap; /* 한 줄에 모든 캐릭터를 줄 바꿈 없이 표시 */
+    overflow: hidden; /* 슬라이드될 때 넘어가는 캐릭터들을 숨김 */
+    width: 100px; /* 슬라이드 영역의 너비를 한 캐릭터 크기에 맞춤 */
+    justify-content: space-evenly;
+    margin-left: 46%;
+}
+
+.menu-container {
+    position: absolute;
+    bottom: 14.5%;
+    display: flex;
+    justify-content: space-around;
+    padding-bottom: 10px;
+    gap: 6%;
+    margin-left: -2.5%;
+    width: 87%;
+    margin-bottom: -31% !important;
+}
+
+.menu_btn {
+    width: 110% !important;
+    height: auto !important;
+    transition: transform 0.3s ease;
+}
+
+.menu_text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+    color: white;
+    font-weight: bold;
+    pointer-events: none;
+    margin-left: 4% !important;
+}
+
+.container {
+    text-align: center;
+    color: white; /* 기본 글씨 색상은 흰색으로 설정 */
+    position: relative; /* 배경 이미지 위에 컨텐츠를 올리기 위해 상대 위치 지정 */
+    z-index: 1; /* 컨텐츠가 배경 이미지 위에 표시되도록 z-index 설정 */
+    height: 70%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.character-img {
+    width: 35%!important; /* 캐릭터 이미지 크기 설정 */
+    height: auto;
+}
+
+.back_ground_cont::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('<c:url value="/assets/images/home.png" />') no-repeat center center fixed;
+    background-size: 360px 640px;
+    z-index: -1; /* 배경 이미지가 컨텐츠 뒤에 표시되도록 z-index 설정 */
+}
+
+.arrow-icon {
+    width: 50px !important;
+    height: 50px !important;
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10; /* 가장 앞부분에 표시되도록 z-index 설정 */
+}
+
+.arrow-icon.left {
+    margin-left: -15%;
+}
+
+.arrow-icon.right {
+    margin-left: 11.5%;
+}
+
+.character-slider {
+    display: flex;
+    transition: transform 0.5s ease; /* 슬라이드 애니메이션 효과 */
+    margin-top: 140%;
+}
+
+.select-button {
+    margin-top: 2.3%;
+    cursor: pointer;
+    width: 23% !important;
+}
+
+/* 반응형 디자인을 위한 미디어 쿼리 */
+@media ( max-width: 768px) {
+    .container {
+        width: 100%;
+        height: auto;
+        margin-top: 0;
+    }
+    .back_ground_cont::before {
+        background-size: 80%;
+    }
+    .character-label {
+        width: 80px;
+        height: 80px;
+    }
+    .character-selection-content {
+        flex-direction: column;
+    }
+    body, h1, p, .character-label span {
+        color: black; /* 모바일 환경에서는 글씨 색상을 검정으로 변경 */
+    }
+    h1.mobile-title {
+        display: block;
+    }
+    .arrow-icon {
+        width: 50px !important;
+        height: 50px !important;
+        cursor: pointer;
+        position: absolute;
+        top: 50%;
+        transform: translateY(50%);
+        z-index: 10; /* 가장 앞부분에 표시되도록 z-index 설정 */
+    }
+}
+
+@media ( max-width: 480px) {
+    .character-label {
+        width: 60px;
+        height: 60px;
+    }
+    .character-selection-content {
+        flex-direction: column;
+    }
+    body, h1, p, .character-label span {
+        color: black; /* 모바일 환경에서는 글씨 색상을 검정으로 변경 */
+        margin-top: -18%;
+    }
+    h1.mobile-title {
+        display: block;
+    }
+    .select-button {
+        margin-top: -14.7%;
+        cursor: pointer;
+        width: 80% !important;
+        transform: translateY(98%);
+    }
+    .arrow-icon.left {
+        margin-left: -48%;
+    }
+    .arrow-icon.right {
+        margin-left: 36.5%;
+    }
+    h1.mobile-title {
+        display: none;
+    }
+    .character-selection-content form {
+        display: flex;
+        justify-content: center;
+        flex-wrap: nowrap;
+        overflow: hidden;
+        width: 100px;
+        justify-content: space-evenly;
+        margin-left: 38%;
+    }
+    .desktop-title {
+        font-size: 25px;
+        transform: translateY(35%);
+    }
+}
+
+.item-section {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 300px;
+    height: 550px;
+    display: none; /* 기본적으로 숨김 */
+    flex-direction: column;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.8); /* 반투명 배경 */
+    padding: 10px;
+    border-radius: 10px;
+    z-index: 5; /* 컨텐츠가 배경 이미지 위에 표시되도록 z-index 설정 */
+}
+
+.item-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin-bottom: 10px; /* 아래쪽 마진 추가 */
+}
+
+.back-icon {
+    width: 25px !important; /* 아이콘 너비를 25px로 설정 */
+    height: 25px !important; /* 아이콘 높이를 25px로 설정 */
+    cursor: pointer; /* 커서 포인터로 변경 */
+    margin-right: 10px; /* 오른쪽 마진 추가 */
+}
+
+.item-title {
+    font-size: 18px;
+    color: white;
+}
+
+.items-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3열로 배치 */
+    gap: 20px; /* 아이템 간의 간격 설정 */
+    justify-content: center;
+    align-items: center;
+}
+
+.item-button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 60px;
+    height: 60px;
+    cursor: pointer;
+    margin: 10px; /* 아이템 간의 간격 설정 */
+}
+
+.item-info {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    margin-top: 5px;
+}
+
+.item-info img {
+    width: 25px; /* 아이콘 너비를 25px로 설정 */
+    height: 25px; /* 아이콘 높이를 25px로 설정 */
+}
+
+.item-info span {
+    font-size: 12px;
+    color: white;
+}
+
+.modal {
+    position: fixed;
+    z-index: 500; /* 높은 우선순위로 설정 */
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 70%;
+    max-width: 300px;
+    background-color: rgba(0, 0, 0, 0.8); /* 어두운 반투명 배경 */
+    border-radius: 10px;
+    padding: 10px;
+    text-align: center;
+    display: none; /* 기본적으로 숨김 */
+}
+
+.modal-content {
+    position: relative;
+    padding: 20px;
+    background-color: rgba(0, 128, 0, 0.8); /* 배경색을 초록색으로 설정하고, 투명도 80% 적용 */
+    border-radius: 10px;
+    height: auto; /* 내용에 따라 자동으로 높이 설정 */
+    max-height: 40vh; /* 화면 높이의 40%를 최대 높이로 설정 */
+    text-align: center;
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 28px;
+    font-weight: bold;
+    color: #333;
+    cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center; /* 버튼들을 가운데 정렬 */
+    margin-top: 15px; /* 위쪽 여백 추가 */
+}
+
+.btn {
+    padding: 5px 10px;
+    margin: 0 5px; /* 좌우 여백 추가 */
+    cursor: pointer;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+
+.btn:hover {
+    background-color: #0056b3;
+}
+
+.item-details {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px 0; /* 위아래 여백 추가 */
+}
+
+.item-details img {
+    width: 20px;
+    height: 20px;
+    margin: 0 5px;
+}
+
+.item-details span {
+    color: white;
+    font-size: 16px;
+    margin-left: 5px;
+}
+
+.item {
+    display: inline-block;
+    margin: 10px;
+    cursor: pointer;
+}
+
+.item img {
+    width: 50px;
+    height: 50px;
+}
+
+.item span {
+    display: block;
+}
+
+#confirmModal {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: green;
+    padding: 20px;
+    border: 1px solid #ccc;
+}
+</style>
+</head>
+<body class="back_ground_cont">
+    <div class="container">
+        <div class="character-selection-content">
+            <c:if test="${not empty damainfoChar}">
+                <div class="container">
+                    <img src="<c:url value='/assets/images/${damainfoChar}.png' />" alt="${damainfoChar}" class="character-img">
+                </div>
+            </c:if>
+            <c:if test="${empty damainfoChar}">
+                <!-- 계정이 없다고 판별 -->
+            </c:if>
+        </div>
+        <div class="menu-container">
+            <div style="position: relative;">
+                <img class="menu_btn" id="food" alt="food" src="assets/images/menu_btn.png">
+                <span class="menu_text">Food</span>
+            </div>
+            <div style="position: relative;">
+                <img class="menu_btn" id="fun" alt="fun" src="assets/images/menu_btn.png">
+                <span class="menu_text">Fun</span>
+            </div>
+            <div style="position: relative;">
+                <img class="menu_btn" id="medicine" alt="medicine" src="assets/images/menu_btn.png">
+                <span class="menu_text">Medicine</span>
+            </div>
+        </div>
+        <div id="item_section" class="item-section">
+            <div class="item-header">
+                <img id="back_icon" src="assets/images/back_icon.png" alt="Back Icon" class="back-icon">
+                <span id="item_title" class="item-title"></span>
+            </div>
+            <!-- 아이템 버튼들을 추가할 영역 -->
+            <div id="items_container" class="items-container"></div>
+        </div>
+
+        <!-- Modal Structure -->
+       <form id="confirmModalForm" action="<c:url value='confirmModal' />" method="post"> 
+        <div id="confirmModal" class="modal">
+            <div class="modal-content">
+                <span class="close" id="closeModal">&times;</span>
+                <h2>아이템 구매 확인</h2>
+                <div id="modalItemDetails">
+                    <img id="modalItemImage" src="" alt="Item Image" style="width: 50px; height: 50px;">
+                    <div class="item-details">
+                        <img src="assets/images/coin.png" alt="Price">
+                        <span id="modalItemPrice"></span>
+                        <img src="assets/images/heart_small.png" alt="Hearts">
+                        <span id="modalItemHearts"></span>
+                    </div>
+                </div>
+                <p>이 아이템을 구매하여 먹이시겠습니까?</p>
+                <div class="button-container">
+                    <button class="btn" id="confirmButton">확인</button>
+                    <button class="btn" id="cancelButton">취소</button>
+                </div>
+            </div>
+        </div>
+       </form> 
+    </div>
+<script>
+const buttons = document.querySelectorAll('.menu_btn');
+const itemSection = document.getElementById('item_section');
+const itemsContainer = document.getElementById('items_container');
+const backIcon = document.getElementById('back_icon');
+const itemTitle = document.getElementById('item_title');
+
+// Modal elements
+const confirmModal = document.getElementById('confirmModal');
+const closeModal = document.getElementById('closeModal');
+const modalItemImage = document.getElementById('modalItemImage');
+const modalItemPrice = document.getElementById('modalItemPrice');
+const modalItemHearts = document.getElementById('modalItemHearts');
+const confirmButton = document.getElementById('confirmButton');
+const cancelButton = document.getElementById('cancelButton');
+
+buttons.forEach(button => {
+    button.addEventListener('click', () => {
+        // 버튼 아이콘 Y축으로 20% 이동
+        button.style.transform = 'translateY(-20%)';
+
+        // item_section 위치를 버튼 아래로 이동
+        const buttonRect = button.getBoundingClientRect();
+        itemSection.style.top = `${buttonRect.bottom}px`;
+
+        setTimeout(() => {
+            // 버튼 애니메이션 복원
+            button.style.transform = 'translateY(0)';
+
+            // item_section 이미지 표시
+            itemSection.style.display = 'flex';
+
+            // 기존 아이템 제거
+            itemsContainer.innerHTML = '';
+
+            // 섹션 제목 설정 및 아이템 추가
+            if (button.id === 'food') {
+                itemTitle.textContent = 'Food Items';
+                addItemButton('assets/images/food1.png', 'Food 1', 100, 5);
+                addItemButton('assets/images/food2.png', 'Food 2', 150, 10);
+                addItemButton('assets/images/food3.png', 'Food 3', 200, 15);
+                addItemButton('assets/images/food4.png', 'Food 4', 250, 20);
+            } else if (button.id === 'fun') {
+                itemTitle.textContent = 'Fun Items';
+                addItemButton('assets/images/fun1.png', 'Fun 1', 100, 5);
+                addItemButton('assets/images/fun2.png', 'Fun 2', 150, 10);
+                addItemButton('assets/images/fun3.png', 'Fun 3', 200, 15);
+                addItemButton('assets/images/fun4.png', 'Fun 4', 250, 20);
+            } else if (button.id === 'medicine') {
+                itemTitle.textContent = 'Medicine Items';
+                addItemButton('assets/images/medicine1.png', 'Medicine 1', 100, 5);
+                addItemButton('assets/images/medicine2.png', 'Medicine 2', 150, 10);
+                addItemButton('assets/images/medicine3.png', 'Medicine 3', 200, 15);
+                addItemButton('assets/images/medicine4.png', 'Medicine 4', 250, 30);
+            }
+        }, 300);
+    });
+});
+
+function addItemButton(imgSrc, altText, price, hearts) {
+    const itemButton = document.createElement('div');
+    itemButton.classList.add('item-button');
+
+    const itemImage = document.createElement('img');
+    itemImage.src = imgSrc;
+    itemImage.alt = altText;
+    itemImage.classList.add('item-img');
+
+    const itemInfo = document.createElement('div');
+    itemInfo.classList.add('item-info');
+
+    const priceIcon = document.createElement('img');
+    priceIcon.src = 'assets/images/coin.png';
+    priceIcon.alt = 'Price';
+
+    const priceText = document.createElement('span');
+    priceText.textContent = price;
+
+    const heartIcon = document.createElement('img');
+    heartIcon.src = 'assets/images/heart_small.png';
+    heartIcon.alt = 'Hearts';
+
+    const heartText = document.createElement('span');
+    heartText.textContent = hearts;
+
+    itemInfo.appendChild(priceIcon);
+    itemInfo.appendChild(priceText);
+    itemInfo.appendChild(heartIcon);
+    itemInfo.appendChild(heartText);
+
+    itemButton.appendChild(itemImage);
+    itemButton.appendChild(itemInfo);
+
+    itemsContainer.appendChild(itemButton);
+
+    // Add event listener to the newly created item button
+    itemButton.addEventListener('click', () => {
+        modalItemImage.src = imgSrc;
+        modalItemPrice.textContent = price;
+        modalItemHearts.textContent = hearts;
+
+        confirmModal.style.display = 'block';
+    });
+}
+
+cancelButton.addEventListener('click', () => {
+    confirmModal.style.display = 'none';
+});
+
+closeModal.addEventListener('click', () => {
+    confirmModal.style.display = 'none';
+});
+
+// 뒤로가기 아이콘 클릭 시 item_section 숨기기
+backIcon.addEventListener('click', () => {
+    itemSection.style.display = 'none';
+});
+</script>
+</body>
+</html>

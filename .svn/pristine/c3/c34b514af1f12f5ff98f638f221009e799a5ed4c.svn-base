@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.greencycle.my.game.dao.DamainfoDAO">
+
+
+
+
+
+
+
+	<select id="getDamainfo" resultType="DamainfoVO">
+		SELECT *
+		FROM
+		damainfo
+		WHERE user_id= #{userId}
+	</select>
+	
+<!-- 	<insert id="insertSell" parameterType="SellVO"> -->
+<!-- 		INSERT INTO sales (sales_no, sales_price,sales_name, sales_content, sales_image, sales_addr, user_id) -->
+<!-- 		VALUES ((SELECT NVL(MAX(sales_no),0) + 1 -->
+<!-- 		FROM sales), #{salesPrice}, #{salesName}, #{salesContent}, -->
+<!-- 		#{salesImage}, #{salesAddr}, #{userId}) -->
+<!-- 	</insert> -->
+<!-- 	<select id="getSell" resultType="SellVO" parameterType="int"> -->
+	
+<!--     SELECT a.sales_no -->
+<!--         , a.sales_name -->
+<!--         , a.sales_content -->
+<!--         , a.sales_image -->
+<!--         , a.user_id -->
+<!--         , a.sales_price -->
+<!--         , b.user_nick -->
+<!--         , TO_CHAR(a.sales_date, 'YYYY/MM/dd') as sales_date -->
+<!--         , a.sales_addr -->
+<!-- 		, a.sales_status -->
+        
+<!--     FROM -->
+<!--         sales a -->
+<!--     JOIN -->
+<!--         users b ON a.user_id = b.user_id -->
+    
+<!--     WHERE -->
+<!--         a.sales_no = #{salesNo} -->
+<!--         AND a.sales_del_yn = 'N' -->
+
+
+
+<!-- 	</select> -->
+<!-- 	<update id="updateSell" parameterType="SellVO"> -->
+<!-- 		UPDATE sales -->
+<!-- 		SET -->
+<!-- 		sales_name = #{salesName} -->
+<!-- 		,sales_price= #{salesPrice} -->
+<!-- 		,sales_status= #{salesStatus} -->
+<!-- 		,sales_image = #{salesImage} -->
+<!-- 		,sales_content = #{salesContent} -->
+<!-- 		,sales_date = SYSDATE -->
+<!-- 		,sales_addr = #{salesAddr} -->
+<!-- 		WHERE sales_no = #{salesNo} -->
+<!-- 	</update> -->
+<!-- 	<update id="deleteSell" parameterType="int"> -->
+<!-- 		UPDATE sales -->
+<!-- 		SET sales_del_yn -->
+<!-- 		='Y' -->
+<!-- 		WHERE sales_no = #{salesNo} -->
+<!-- 	</update> -->
+</mapper>
+

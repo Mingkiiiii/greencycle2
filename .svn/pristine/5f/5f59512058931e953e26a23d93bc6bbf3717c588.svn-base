@@ -1,0 +1,44 @@
+package com.greencycle.my.chat.web;
+
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.greencycle.my.chat.service.ChatBoardService;
+import com.greencycle.my.chat.vo.ChatVO;
+
+
+
+@Controller
+public class ChatController {   
+	
+		@Autowired
+		ChatBoardService chatBoardService;
+	    
+	    @RequestMapping("/chat")
+	    public String chatListView(Model model) {
+	    	List<ChatVO> roomList = chatBoardService.getRoomList();
+	    	System.out.println("===================================");
+	    	model.addAttribute("roomList", roomList);
+	    	System.out.println(roomList);
+	    	
+	    return "chat";
+}
+	    
+	    
+	    
+	    
+	    
+
+	   
+	    
+	    
+	    
+}
+
+
+

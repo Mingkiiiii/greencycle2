@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<settings>
+		<!-- Oracle 테이블의 컬럼이 mem_id 이고, DTO의 필드변수가 memId 일때 매칭이 가능하게 하는 옵션 -->
+		<setting name="mapUnderscoreToCamelCase" value="true" />
+		<!-- 널허용 -->
+		<setting name="jdbcTypeForNull" value="NULL" />
+	</settings>
+	<typeAliases>
+		<typeAlias type="com.greencycle.my.member.vo.MemberVO" alias="MemberVO" />
+		<typeAlias type="com.greencycle.my.board.vo.BoardVO" alias="BoardVO" />
+		<typeAlias type="com.greencycle.my.noticeqna.vo.NoticeQnaVO" alias="NoticeQnaVO" />
+		<typeAlias type="com.greencycle.my.noticeqna.vo.NoticeQnaSearchVO" alias="NoticeQnaSearchVO" />
+		<typeAlias type="com.greencycle.my.cs.vo.CsVO" alias="CsVO" />
+
+		<typeAlias type="com.greencycle.my.commons.vo.CodeVO"
+			alias="CodeVO" />
+		<typeAlias type="com.greencycle.my.cs.vo.CsSearchVO"
+			alias="CsSearchVO" />
+		<typeAlias type="com.greencycle.my.sell.vo.SellVO"
+			alias="SellVO" />
+		<typeAlias type="com.greencycle.my.chat.vo.ChatVO"
+			alias="ChatVO" />
+		<typeAlias type="com.greencycle.my.sharing.vo.SharingVO"
+			alias="SharingVO" />
+		<typeAlias alias="NoticeQnaSearchVO"
+			type="com.greencycle.my.noticeqna.vo.NoticeQnaSearchVO" />
+		<typeAlias type="com.greencycle.my.member.vo.MemberVO" alias="MemberVO"/>
+		<typeAlias type="com.greencycle.my.board.vo.BoardVO" alias="BoardVO"/>
+		<typeAlias type="com.greencycle.my.noticeqna.vo.NoticeQnaVO" alias="NoticeQnaVO"/>
+		<typeAlias type="com.greencycle.my.noticeqna.vo.NoticeQnaSearchVO" alias="NoticeQnaSearchVO"/>
+		<typeAlias type="com.greencycle.my.cs.vo.CsVO" alias="CsVO"/>
+		<typeAlias type="com.greencycle.my.commons.vo.CodeVO" alias="CodeVO"/>
+		<typeAlias type="com.greencycle.my.cs.vo.CsSearchVO" alias="CsSearchVO"/>
+		<typeAlias type="com.greencycle.my.sell.vo.SellVO" alias="SellVO"/>
+		<typeAlias type="com.greencycle.my.chat.vo.ChatVO" alias="ChatVO"/>
+		<typeAlias type="com.greencycle.my.sharing.vo.SharingVO" alias="SharingVO"/>
+		 <typeAlias alias="NoticeQnaSearchVO" type="com.greencycle.my.noticeqna.vo.NoticeQnaSearchVO"/>
+		<typeAlias type="com.greencycle.my.member.vo.MemberVO" alias="MemberVO"/>
+		<typeAlias type="com.greencycle.my.member.vo.MemberSearchVO" alias="MemberSearchVO"/>
+		<typeAlias type="com.greencycle.my.board.vo.BoardVO" alias="BoardVO"/>
+		<typeAlias type="com.greencycle.my.noticeqna.vo.NoticeQnaVO" alias="NoticeQnaVO"/>
+		<typeAlias type="com.greencycle.my.noticeqna.vo.NoticeQnaSearchVO" alias="NoticeQnaSearchVO"/>
+		<typeAlias type="com.greencycle.my.cs.vo.CsVO" alias="CsVO"/>
+		<typeAlias type="com.greencycle.my.commons.vo.CodeVO" alias="CodeVO"/>
+		<typeAlias type="com.greencycle.my.cs.vo.CsSearchVO" alias="CsSearchVO"/>
+		<typeAlias type="com.greencycle.my.sharing.vo.SharingVO" alias="SharingVO"/>
+		<typeAlias type="com.greencycle.my.sell.vo.SellVO" alias="SellVO"/>
+		<typeAlias type="com.greencycle.my.sell.vo.SellSearchVO" alias="SellSearchVO"/>
+		<typeAlias type="com.greencycle.my.sharing.vo.SharingVO" alias="SharingVO"/>
+		<typeAlias type="com.greencycle.my.chat.vo.ChatVO" alias="ChatVO"/>
+		<typeAlias type="com.greencycle.my.sharing.vo.SharingVO" alias="SharingVO"/>
+		<typeAlias alias="DamainfoVO" type="com.greencycle.my.game.vo.DamainfoVO"/>
+		
+
+		 <typeAlias alias="NoticeQnaSearchVO" type="com.greencycle.my.noticeqna.vo.NoticeQnaSearchVO"/>
+
+		<typeAlias type="com.greencycle.my.commons.vo.CodeVO"
+			alias="CodeVO" />
+		<typeAlias type="com.greencycle.my.cs.vo.CsSearchVO"
+			alias="CsSearchVO" />
+		<typeAlias type="com.greencycle.my.sell.vo.SellVO"
+			alias="SellVO" />
+		<typeAlias type="com.greencycle.my.chat.vo.ChatVO"
+			alias="ChatVO" />
+		<typeAlias type="com.greencycle.my.sharing.vo.SharingVO"
+			alias="SharingVO" />
+		<typeAlias alias="NoticeQnaSearchVO"
+			type="com.greencycle.my.noticeqna.vo.NoticeQnaSearchVO" />
+		<typeAlias type="com.greencycle.my.member.vo.MemberVO" alias="MemberVO"/>
+		<typeAlias type="com.greencycle.my.board.vo.BoardVO" alias="BoardVO"/>
+		<typeAlias type="com.greencycle.my.noticeqna.vo.NoticeQnaVO" alias="NoticeQnaVO"/>
+		<typeAlias type="com.greencycle.my.noticeqna.vo.NoticeQnaSearchVO" alias="NoticeQnaSearchVO"/>
+		<typeAlias type="com.greencycle.my.cs.vo.CsVO" alias="CsVO"/>
+		<typeAlias type="com.greencycle.my.commons.vo.CodeVO" alias="CodeVO"/>
+		<typeAlias type="com.greencycle.my.cs.vo.CsSearchVO" alias="CsSearchVO"/>
+		<typeAlias type="com.greencycle.my.sell.vo.SellVO" alias="SellVO"/>
+		<typeAlias type="com.greencycle.my.chat.vo.ChatVO" alias="ChatVO"/>
+		<typeAlias type="com.greencycle.my.sharing.vo.SharingVO" alias="SharingVO"/>
+		 <typeAlias alias="NoticeQnaSearchVO" type="com.greencycle.my.noticeqna.vo.NoticeQnaSearchVO"/>
+		<typeAlias type="com.greencycle.my.member.vo.MemberVO" alias="MemberVO"/>
+		<typeAlias type="com.greencycle.my.member.vo.MemberSearchVO" alias="MemberSearchVO"/>
+		<typeAlias type="com.greencycle.my.board.vo.BoardVO" alias="BoardVO"/>
+		<typeAlias type="com.greencycle.my.noticeqna.vo.NoticeQnaVO" alias="NoticeQnaVO"/>
+		<typeAlias type="com.greencycle.my.noticeqna.vo.NoticeQnaSearchVO" alias="NoticeQnaSearchVO"/>
+		<typeAlias type="com.greencycle.my.cs.vo.CsVO" alias="CsVO"/>
+		<typeAlias type="com.greencycle.my.commons.vo.CodeVO" alias="CodeVO"/>
+		<typeAlias type="com.greencycle.my.cs.vo.CsSearchVO" alias="CsSearchVO"/>
+		<typeAlias type="com.greencycle.my.sharing.vo.SharingVO" alias="SharingVO"/>
+		<typeAlias type="com.greencycle.my.sell.vo.SellVO" alias="SellVO"/>
+		<typeAlias type="com.greencycle.my.sell.vo.SellSearchVO" alias="SellSearchVO"/>
+		<typeAlias type="com.greencycle.my.sharing.vo.SharingVO" alias="SharingVO"/>
+		<typeAlias type="com.greencycle.my.chat.vo.ChatVO" alias="ChatVO"/>
+		<typeAlias type="com.greencycle.my.sharing.vo.SharingVO" alias="SharingVO"/>
+
+		 <typeAlias alias="NoticeQnaSearchVO" type="com.greencycle.my.noticeqna.vo.NoticeQnaSearchVO"/>
+
+		<typeAlias type="com.greencycle.my.commons.vo.CodeVO" alias="CodeVO" />
+		<typeAlias type="com.greencycle.my.cs.vo.CsSearchVO" alias="CsSearchVO" />
+		<typeAlias type="com.greencycle.my.sell.vo.SellVO" alias="SellVO" />
+		<typeAlias type="com.greencycle.my.sell.vo.SellSearchVO" alias="SellSearchVO" />
+		<typeAlias type="com.greencycle.my.chat.vo.ChatVO" alias="ChatVO" />
+		<typeAlias type="com.greencycle.my.sharing.vo.SharingVO"  alias="SharingVO" />
+		<typeAlias type="com.greencycle.my.sharing.vo.SharingSearchVO" alias="SharingSearchVO" />
+		<typeAlias type="com.greencycle.my.member.vo.MemberSearchVO" alias="MemberSearchVO" />
+		
+
+	</typeAliases>
+	
+</configuration>

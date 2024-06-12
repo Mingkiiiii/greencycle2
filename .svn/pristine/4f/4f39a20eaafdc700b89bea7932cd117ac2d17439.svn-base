@@ -1,0 +1,49 @@
+//package com.greencycle.my.game.web;
+//
+//import com.greencycle.my.game.service.TamagotchiService;
+//import com.greencycle.my.game.vo.Tamagotchi;
+//
+//import javax.servlet.http.HttpSession;
+//
+//import org.springframework.beans.factory.annotation.Autowired;
+//import org.springframework.stereotype.Controller;
+//import org.springframework.ui.Model;
+//import org.springframework.web.bind.annotation.GetMapping;
+//import org.springframework.web.bind.annotation.RequestMapping;
+//import org.springframework.web.bind.annotation.RequestMethod;
+//
+//@Controller
+//public class TamagotchiController {
+//
+//    @Autowired
+//    private TamagotchiService tamagotchiService;
+//
+//    @RequestMapping(value = "/tamagotchi", method = RequestMethod.GET)
+//    public String getTamagotchi(Model model, HttpSession session) {
+//        String userId = (String) session.getAttribute("userId");
+//        Tamagotchi tamagotchi = tamagotchiService.getTamagotchi(userId);
+//        model.addAttribute("tamagotchi", tamagotchi);
+//        return "game/tamagotchi";
+//    }
+//
+//    @RequestMapping(value = "/tamagotchi/feed", method = RequestMethod.POST)
+//    public String feedTamagotchi(HttpSession session) {
+//        String userId = (String) session.getAttribute("userId");
+//        tamagotchiService.feed(userId);
+//        return "redirect:/tamagotchi";
+//    }
+//
+//    @RequestMapping(value = "/tamagotchi/play", method = RequestMethod.POST)
+//    public String playWithTamagotchi(HttpSession session) {
+//        String userId = (String) session.getAttribute("userId");
+//        tamagotchiService.play(userId);
+//        return "redirect:/tamagotchi";
+//    }
+//
+//    @RequestMapping(value = "/tamagotchi/reset", method = RequestMethod.POST)
+//    public String resetTamagotchi(HttpSession session) {
+//        String userId = (String) session.getAttribute("userId");
+//        tamagotchiService.resetTamagotchi(userId);
+//        return "redirect:/tamagotchi";
+//    }
+//}

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.greencycle.my.chat.dao.IChatDAO">
+	<select id="getRoomList" resultType="ChatVO">
+	 SELECT 
+    a.room_no,
+    a.room_name,
+    a.user_id AS buyer, 
+    b.user_nick,
+    a.user_id,
+    a.room_date,
+    a.sales_no,
+    c.sales_name AS seller,
+    c.user_id AS seller_id
+FROM 
+    rooms a
+INNER JOIN 
+    users b ON a.user_id = b.user_id
+LEFT JOIN 
+    sales c ON a.sales_no = c.sales_no 
+WHERE 
+    a.del_yn = 'N'
+ORDER BY 
+    a.room_date DESC
+</select>
+	
+	<select id="getRoom" resultType="ChatVO" parameterType="int">
+		SELECT
+		a.room_no
+		, a.room_name
+		, a.mem_id
+		, b.mem_nm
+		, a.reg_date
+
+		FROM rooms a, members b
+		WHERE a.mem_id = b.mem_id
+		AND
+		a.room_no = #{roomNo}
+		AND a.del_yn = 'N'
+	</select>
+	
+	<insert id="createRoom" parameterType="ChatVO">
+
+		INSERT INTO rooms
+    	       (room_no, room_name, user_id, , sales_no, room_date)
+		VALUES(room_seq.NEXTVAL, #{roomName}, #{userId}, ${sales_no}, SYSDATE )
+		
+
+	</insert>
+	
+	
+	<update id="deleteRoom" parameterType="int">
+
+		UPDATE rooms
+    	   SET del_yn = 'Y' 
+		WHERE room_no = #{roomNo}
+		
+	</update>
+	
+	
+</mapper>

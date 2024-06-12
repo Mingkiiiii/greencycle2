@@ -1,0 +1,25 @@
+package com.greencycle.my.chat.dao;
+
+import java.util.List;
+
+import org.apache.ibatis.annotations.Mapper;
+
+import com.greencycle.my.chat.vo.ChatVO;
+
+@Mapper
+public interface IChatDAO {
+		// 전체 채팅방 리스트
+		public List<ChatVO> getRoomList();
+
+		// 채팅방 정보조회
+		public ChatVO getRoom(int roomNo);
+
+		// 채팅방 생성
+		public int createRoom(ChatVO vo);
+		
+		// 채팅방 삭제
+		public int deleteRoom(int roomNo);
+
+	
+	
+}

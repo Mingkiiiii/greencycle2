@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.greencycle.my.chat.dao.IChatDAO">
+	<select id="getRoomList" resultType="ChatVO">
+	SELECT a.room_no, 
+       a.buyer_id, 
+       b.user_id, 
+       b.sales_name, 
+       a.room_time, 
+	       c.user_nick AS buyer_nick,
+	       d.user_nick AS seller_nick,
+	       c.user_profile AS buyer_profile,
+	       d.user_profile AS seller_profile
+FROM room a
+JOIN sales b ON a.room_no = b.sales_no
+JOIN users c ON a.buyer_id = c.user_id
+JOIN users d ON b.user_id = d.user_id
+WHERE (b.user_id = #{userId} OR a.buyer_id = #{userId})
+</select>
+<select id="getRoomList2" resultType="ChatVO">
+	SELECT a.room_no, 
+       a.buyer_id, 
+       b.user_id, 
+       b.sales_name, 
+       a.room_time, 
+	       c.user_nick AS buyer_nick,
+	       d.user_nick AS seller_nick,
+	       c.user_profile AS buyer_profile,
+	       d.user_profile AS seller_profile
+FROM room a
+JOIN sales b ON a.room_no = b.sales_no
+JOIN users c ON a.buyer_id = c.user_id
+JOIN users d ON b.user_id = d.user_id
+</select>
+	
+	<select id="getChat" resultType="ChatVO" parameterType="ChatVO">
+     SELECT 
+    a.chat_no, 
+    a.buyer_id, 
+    a.room_no, 
+    a.user_id, 
+    a.message_content, 
+    a.send_time,
+    c.user_nick AS buyer_nick,
+    d.user_nick AS seller_nick,
+    c.user_profile AS buyer_profile,
+    d.user_profile AS seller_profile
+FROM 
+    chat a
+JOIN 
+    room r ON a.room_no = r.room_no AND a.buyer_id = r.buyer_id
+JOIN 
+    sales s ON r.room_no = s.sales_no
+JOIN 
+    users c ON a.buyer_id = c.user_id
+JOIN 
+    users d ON s.user_id = d.user_id
+WHERE 
+    a.room_no = #{roomNo} AND a.buyer_id = #{buyerId}
+ORDER BY 
+    a.chat_no ASC
+</select>
+<insert id="createRoom" parameterType="ChatVO">
+
+      INSERT INTO room
+              (room_no, buyer_id)
+      VALUES(#{roomNo},#{buyerId} )
+      
+
+   </insert>
+	
+	<insert id="insertChat" parameterType="ChatVO">
+
+		insert into chat (chat_no, buyer_id, room_no, user_id, message_content)
+		values (chats_seq4.nextval, #{buyerId}, #{roomNo}, #{userId}, #{messageContent})
+		
+
+	</insert>
+	
+	
+	<update id="deleteRoom" parameterType="int">
+
+		UPDATE rooms
+    	   SET del_yn = 'Y' 
+		WHERE room_no = #{roomNo}
+		
+	</update>
+	
+	
+</mapper>

@@ -1,0 +1,21 @@
+package com.greencycle.my.game.service;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.greencycle.my.game.dao.DamainfoDAO;
+import com.greencycle.my.game.vo.DamainfoVO;
+import com.greencycle.my.member.vo.MemberVO;
+
+@Service
+public class DamainfoService {
+	@Autowired
+	DamainfoDAO dao;
+	
+	public MemberVO getDamainfo(MemberVO vo) {
+		return dao.getDamainfo(vo);
+	}
+
+}

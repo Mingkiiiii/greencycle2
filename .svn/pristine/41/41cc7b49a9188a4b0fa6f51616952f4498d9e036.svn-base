@@ -1,0 +1,89 @@
+package com.greencycle.my.game.vo;
+
+public class DamainfoVO {
+	private String damainfoNo;
+	private Integer damainfoLevel;
+	private Integer damainfoHp;
+	private Integer damainfoClean;
+	private Integer damainfoFood;
+	private String damainfoType;
+	private Integer damainfoHappiness;
+	private Integer damainfoExp;
+	private String userId;
+	private String damainfoChar;
+	private String damainfoName;
+	public String getDamainfoNo() {
+		return damainfoNo;
+	}
+	public void setDamainfoNo(String damainfoNo) {
+		this.damainfoNo = damainfoNo;
+	}
+	public Integer getDamainfoLevel() {
+		return damainfoLevel;
+	}
+	public void setDamainfoLevel(Integer damainfoLevel) {
+		this.damainfoLevel = damainfoLevel;
+	}
+	public Integer getDamainfoHp() {
+		return damainfoHp;
+	}
+	public void setDamainfoHp(Integer damainfoHp) {
+		this.damainfoHp = damainfoHp;
+	}
+	public Integer getDamainfoClean() {
+		return damainfoClean;
+	}
+	public void setDamainfoClean(Integer damainfoClean) {
+		this.damainfoClean = damainfoClean;
+	}
+	public Integer getDamainfoFood() {
+		return damainfoFood;
+	}
+	public void setDamainfoFood(Integer damainfoFood) {
+		this.damainfoFood = damainfoFood;
+	}
+	public String getDamainfoType() {
+		return damainfoType;
+	}
+	public void setDamainfoType(String damainfoType) {
+		this.damainfoType = damainfoType;
+	}
+	public Integer getDamainfoHappiness() {
+		return damainfoHappiness;
+	}
+	public void setDamainfoHappiness(Integer damainfoHappiness) {
+		this.damainfoHappiness = damainfoHappiness;
+	}
+	public Integer getDamainfoExp() {
+		return damainfoExp;
+	}
+	public void setDamainfoExp(Integer damainfoExp) {
+		this.damainfoExp = damainfoExp;
+	}
+	public String getUserId() {
+		return userId;
+	}
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
+	public String getDamainfoChar() {
+		return damainfoChar;
+	}
+	public void setDamainfoChar(String damainfoChar) {
+		this.damainfoChar = damainfoChar;
+	}
+	public String getDamainfoName() {
+		return damainfoName;
+	}
+	public void setDamainfoName(String damainfoName) {
+		this.damainfoName = damainfoName;
+	}
+	@Override
+	public String toString() {
+		return "DamaInfoVO [damainfoNo=" + damainfoNo + ", damainfoLevel=" + damainfoLevel + ", damainfoHp="
+				+ damainfoHp + ", damainfoClean=" + damainfoClean + ", damainfoFood=" + damainfoFood + ", damainfoType="
+				+ damainfoType + ", damainfoHappiness=" + damainfoHappiness + ", damainfoExp=" + damainfoExp
+				+ ", userId=" + userId + ", damainfoChar=" + damainfoChar + ", damainfoName=" + damainfoName + "]";
+	}
+	
+}

@@ -1,0 +1,172 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>이미지 업로드 및 예측</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f3f3f3;
+            margin: 0;
+            padding: 0;
+        }
+
+        #top {
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+        }
+
+        h2 {
+            text-align: center;
+            margin-top: 20px;
+            color: #333;
+        }
+
+        form {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        input[type="file"] {
+            display: none;
+        }
+
+        #fileLabel {
+            padding: 10px 20px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        #fileLabel:hover {
+            background-color: #2980b9;
+        }
+
+        #uploadButton {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        #uploadButton:hover {
+            background-color: #45a049;
+        }
+
+        #predictionResult {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        #selectedImageContainer {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        #selectedImage {
+            max-width: 300px;
+            max-height: 300px;
+        }
+    </style>
+</head>
+<body>
+    <div id="top">
+        <h1>이미지 업로드 및 예측</h1>
+    </div>
+    <jsp:include page="/WEB-INF/inc/top2.jsp"></jsp:include>
+    <br>
+    <br>
+    <form id="uploadForm" enctype="multipart/form-data">
+        <label id="fileLabel" for="fileInput">이미지 선택</label>
+        <input type="file" name="file" id="fileInput">
+        <button id="uploadButton" type="submit">분류 시작</button>
+    </form>
+    <div id="predictionResult"></div>
+    <div id="selectedImageContainer">
+        <img id="selectedImage" src="#" alt="선택된 이미지">
+    </div>
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#fileInput').change(function() {
+                readURL(this);
+            });
+
+            $('#uploadForm').submit(function(e) {
+                e.preventDefault();
+                var formData = new FormData(this);
+                $.ajax({
+                    url: 'http://192.168.0.34:5001/predict', // Flask 서버의 IP 주소와 포트를 명시
+                    type: 'POST',
+                    data: formData,
+                    contentType: false,
+                    processData: false,
+                    success: function(response) {
+                        // 예측 결과를 표시
+                        var predictionResult = response.prediction;
+                        $('#predictionResult').html(predictionResult);
+
+                        // 예측 결과에 따라 페이지 이동
+                        switch (predictionResult) {
+                            case "유리병":
+                                window.location.href = "<c:url value='/glass' />";
+                                break;
+                            case "건전지":
+                                window.location.href = "<c:url value='/battery' />";
+                                break;
+                            case "금속캔":
+                                window.location.href = "<c:url value='/can' />";
+                                break;
+                            case "형광등":
+                                window.location.href = "<c:url value='/fluorescentlamp' />";
+                                break;
+                            case "종이":
+                                window.location.href = "<c:url value='/paper' />";
+                                break;
+                            case "페트병":
+                                window.location.href = "<c:url value='/pet' />";
+                                break;
+                            case "플라스틱":
+                                window.location.href = "<c:url value='/plastic' />";
+                                break;
+                            case "비닐":
+                                window.location.href = "<c:url value='/plasticbag' />";
+                                break;
+                            case "스티로폼":
+                                window.location.href = "<c:url value='/styroform' />";
+                                break;
+                            default:
+                                console.error("Unknown prediction result");
+                        }
+                    },
+                    error: function(xhr, status, error) {
+                        console.error("Error:", error);
+                    }
+                });
+            });
+        });
+
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                
+                reader.onload = function(e) {
+                    $('#selectedImage').attr('src', e.target.result);
+                }
+                
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+    </script>
+</body>
+</html>

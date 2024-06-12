@@ -1,0 +1,33 @@
+package com.greencycle.my.game.web;
+
+import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import com.greencycle.my.game.service.DamainfoService;
+import com.greencycle.my.game.vo.DamainfoVO;
+
+
+@Controller
+public class DamainfoController {
+	@Autowired
+	DamainfoService damainfoService;
+	
+	@RequestMapping("/select")
+    public String select(HttpServletRequest request, Model model) {
+        HttpSession session = request.getSession();
+        String userId = (String) session.getAttribute("userId");
+        System.out.println(userId);
+        boolean isUserExists = damainfoService.select(userId);
+        model.addAttribute("isUserExists", isUserExists);
+        return "game/characterSelect";
+    }
+
+}

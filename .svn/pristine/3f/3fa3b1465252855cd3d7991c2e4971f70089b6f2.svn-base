@@ -1,0 +1,55 @@
+package com.greencycle.my.chat.vo;
+
+public class ChatVO {
+	
+	private int roomNo;
+	private String roomName;
+	private String userId;
+	private String userNick;
+	private String roomDate;
+	private String sales_no;
+	public int getRoomNo() {
+		return roomNo;
+	}
+	public void setRoomNo(int roomNo) {
+		this.roomNo = roomNo;
+	}
+	public String getRoomName() {
+		return roomName;
+	}
+	public void setRoomName(String roomName) {
+		this.roomName = roomName;
+	}
+	public String getUserId() {
+		return userId;
+	}
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
+	public String getUserNick() {
+		return userNick;
+	}
+	public void setUserNick(String userNick) {
+		this.userNick = userNick;
+	}
+	public String getRoomDate() {
+		return roomDate;
+	}
+	public void setRoomDate(String roomDate) {
+		this.roomDate = roomDate;
+	}
+	public String getSales_no() {
+		return sales_no;
+	}
+	public void setSales_no(String sales_no) {
+		this.sales_no = sales_no;
+	}
+	@Override
+	public String toString() {
+		return "ChatVO [roomNo=" + roomNo + ", roomName=" + roomName + ", userId=" + userId + ", userNick=" + userNick
+				+ ", roomDate=" + roomDate + ", sales_no=" + sales_no + "]";
+	}
+	
+	
+	
+}

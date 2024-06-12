@@ -1,0 +1,30 @@
+package com.greencycle.my.game.service;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.greencycle.my.game.dao.DamainfoDAO;
+import com.greencycle.my.game.vo.DamainfoVO;
+import com.greencycle.my.member.vo.MemberVO;
+
+@Service
+public class DamainfoService {
+	@Autowired
+	DamainfoDAO dao;
+	
+	 public DamainfoVO getDamainfo(String userId) throws Exception {
+			DamainfoVO result = dao.getDamainfo(userId);
+			if(result == null) {
+				throw new Exception();
+			}
+			return result;
+		}
+	 public boolean select(String userId) {
+		    // 서비스 레이어에서 DAO에 올바른 userId를 전달합니다.
+		    DamainfoVO damainfo = dao.getDamainfo(userId);
+		    return damainfo != null;
+		}
+
+}

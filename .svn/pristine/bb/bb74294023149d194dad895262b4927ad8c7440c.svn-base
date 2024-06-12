@@ -1,0 +1,37 @@
+//package com.greencycle.my.game.web;
+//
+//import com.greencycle.my.game.service.TamagotchiService;
+//import com.greencycle.my.game.vo.Tamagotchi;
+//import org.springframework.beans.factory.annotation.Autowired;
+//import org.springframework.stereotype.Controller;
+//import org.springframework.ui.Model;
+//import org.springframework.web.bind.annotation.RequestMapping;
+//import org.springframework.web.bind.annotation.RequestMethod;
+//
+//@Controller
+//public class CharacterController {
+//
+//    @Autowired
+//    private TamagotchiService tamagotchiService;
+//
+//    @RequestMapping("/select")
+//    public String selectCharacter(Model model, String userId) {
+//        Tamagotchi tamagotchi = tamagotchiService.getTamagotchi(userId);
+//        model.addAttribute("tamagotchi", tamagotchi);
+//        return "game/characterSelect";
+//    }
+//
+//    @RequestMapping("/gameMain")
+//    public String gameplay(Model model, String userId) {
+//        Tamagotchi tamagotchi = tamagotchiService.getTamagotchi(userId);
+//        model.addAttribute("tamagotchi", tamagotchi);
+//        return "game/gameMain";
+//    }
+//
+//    
+//    @RequestMapping(value = "/create", method = RequestMethod.POST)
+//    public String createTamagotchi(String userId, String characterType) {
+//        tamagotchiService.createTamagotchi(userId, characterType);
+//        return "redirect:/gameMain";
+//    }
+//}

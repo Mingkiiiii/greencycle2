@@ -1,0 +1,180 @@
+@font-face {
+	font-family: 'PFStardust';
+	src:
+		url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/PFStardust.woff')
+		format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+
+body, h1, p, .character-label span {
+	font-family: 'PFStardust', sans-serif;
+	color: black; /* 모바일 환경에서는 글씨 색상을 검정으로 변경 */
+}
+
+.container {
+	width: 100%;
+	height: auto;
+	margin-top: 0;
+	text-align: center;
+	color: black; /* 모바일 환경에서는 글씨 색상을 검정으로 변경 */
+	position: relative;
+	z-index: 1;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.back_ground_cont::before {
+	background-size: 80% !important;
+}
+
+.character-label {
+	width: 80px;
+	height: 80px;
+}
+
+.character-selection-content {
+	flex-direction: column;
+}
+
+.arrow-icon {
+	width: 50px !important;
+	height: 50px !important;
+	cursor: pointer;
+	position: absolute;
+	top: 50%;
+	transform: translateY(50%);
+	z-index: 10; /* 가장 앞부분에 표시되도록 z-index 설정 */
+}
+
+.cam-btn:hover {
+	opacity: 0.7 !important; /* 마우스 호버 시 약간의 투명도 변경 */
+}
+
+.cam-input {
+	position: absolute;
+	width: auto !important;
+	height: 50px !important;
+	margin-left: -7% !important;
+	z-index: 100;
+	margin-bottom: -115.5%;
+	margin-left:-14% !important;
+}
+
+.cam-btn {
+	position: absolute;
+	width: auto !important;
+	height: 50px !important;
+	margin-left: -7% !important;
+	z-index: 100;
+	margin-bottom: -115.5%;
+	margin-left: 1% !important;
+}
+
+.album-icon:hover {
+	opacity: 0.7; /* 마우스 호버 시 약간의 투명도 변경 */
+}
+
+.album-icon {
+	position: absolute;
+	width: auto !important;
+	height: 50px !important;
+	margin-left: -7% !important;
+	z-index: 100;
+	margin-bottom: -115.5%;
+	margin-left: -55% !important;
+}
+
+.album-input {
+        position: absolute;
+        width: 15% !important;
+        height: 50px !important;
+        margin-left: -7% !important;
+        z-index: 100;
+        margin-bottom: -114.5%;
+        margin-left: -55% !important;
+    }
+
+@media ( max-width : 359px) {
+	.character-label {
+		width: 60px;
+		height: 60px;
+	}
+	.character-selection-content {
+		flex-direction: column;
+	}
+	body, h1, p, .character-label span {
+		margin-top: -18%;
+	}
+	.select-button {
+		margin-top: -14.7%;
+		cursor: pointer;
+		width: 80% !important;
+		transform: translateY(98%);
+	}
+	.arrow-icon.left {
+		margin-left: -48%;
+	}
+	.arrow-icon.right {
+		margin-left: 36.5%;
+	}
+	h1.mobile-title {
+		display: none;
+	}
+	.character-selection-content form {
+		display: flex;
+		justify-content: center;
+		flex-wrap: nowrap;
+		overflow: hidden;
+		width: 100px;
+		justify-content: space-evenly;
+		margin-left: 38%;
+	}
+	.desktop-title {
+		font-size: 25px;
+		transform: translateY(35%);
+	}
+	
+	
+	
+}
+
+input[type="file"] {
+            display: none;
+        }
+        
+        
+        
+        #selectedImage {
+max-width: 150px;
+        max-height: 150px;
+        margin-bottom: 200px;
+        position: relative;
+        z-index: 13;
+        bottom: -70px;
+        border: 2px solid black;
+        border-radius: 25px;
+}
+
+
+#resultImage {
+    width: 100%;
+    max-width: 285px;
+    position: relative;
+    animation: slideDown 2s forwards;
+}
+
+.resultText {
+    position: absolute;
+    color: black;
+    font-size: 15px;
+    font-weight: bold;
+    text-align: left;
+    width: 100%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-43%, -81%);
+    line-height: 19px !important;
+    opacity: 0;
+}

@@ -1,0 +1,60 @@
+package com.greencycle.my.game.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.greencycle.my.game.dao.DamainfoDAO;
+import com.greencycle.my.game.vo.DamainfoVO;
+
+@Service
+public class DamainfoService {
+    @Autowired
+    DamainfoDAO dao;
+
+    public DamainfoVO getDamainfo(String userId) {
+        return dao.getDamainfo(userId);
+    }
+
+    public void damainfoWrite(DamainfoVO dama) throws Exception {
+        int result = dao.damainfoWrite(dama);
+        if (result == 0) {
+            throw new Exception();
+        }
+    }
+
+    public DamainfoVO damainfoStatus(int damainfoNo) throws Exception {
+        DamainfoVO result = dao.damainfoStatus(damainfoNo);
+        if (result == null) {
+            throw new Exception();
+        }
+        return result;
+    }
+
+    public void updateDamainfo(DamainfoVO damainfo) throws Exception {
+        int result = dao.updateDamainfo(damainfo);
+        if (result == 0) {
+            throw new Exception("Failed to update damainfo");
+        }
+    }
+
+    public void increaseUserPoints(String userId, int points) throws Exception {
+        int result = dao.increaseUserPoints(userId, points);
+        if (result == 0) {
+            throw new Exception("Failed to increase user points");
+        }
+    }
+
+    public void incrementDamainfo(String userId, int hp, int happiness, int clean) throws Exception {
+        int result = dao.incrementDamainfo(userId, hp, happiness, clean);
+        if (result == 0) {
+            throw new Exception("Failed to increment damainfo");
+        }
+    }
+
+    public void decrementUserPoints(String userId, int points) throws Exception {
+        int result = dao.decrementUserPoints(userId, points);
+        if (result == 0) {
+            throw new Exception("Failed to decrement user points");
+        }
+    }
+}

@@ -1,0 +1,112 @@
+
+@font-face {
+    font-family: 'PFStardust';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/PFStardust.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* 추가로 폰트를 적용할 요소에 스타일 지정 */
+body, h1, p {
+    font-family: 'PFStardust', sans-serif;
+}
+
+/* 배경 이미지 및 콘텐츠 순서 설정 */
+.back_ground_cont {
+    position: relative;
+    z-index: 1; /* 콘텐츠가 z축에서 뒤에 오도록 설정 */
+}
+
+.background-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1; /* 배경 이미지는 z축에서 가장 뒤에 오도록 설정 */
+}
+
+
+.tamagotchi {
+    margin-bottom: 20px;
+}
+
+button {
+    margin: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+}
+
+.container img {
+            width: 100%;
+            height: auto;
+        }
+        .start-button {
+            position: absolute;
+            top: 0px;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 10px 20px;
+            font-size: 24px;
+            cursor: pointer;
+            background: none;
+            border: none;
+        }
+        .start-button img {
+            width: 300px; /* 원하는 크기로 조정 */
+            height: auto;
+        }
+
+ body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #000;
+        }
+        .container {
+            position: relative;
+            text-align: center;
+        }
+
+.background-image {
+    width: 100%;
+    height: auto;
+}
+
+.start-button {
+    position: absolute;
+    top: 70%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+button {
+    font-size: 24px;
+    padding: 10px 20px;
+    background-color: #ffffff;
+    border: 2px solid #000000;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+
+.game-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+
+/* 페이지 틀 */
+
+        
+
