@@ -118,7 +118,8 @@
 		WHERE a.user_id = b.user_id
 		AND
 		a.sales_del_yn = 'N'
-		
+		AND
+		a.sales_status = '판매중'
 	</select>
 
 	<insert id="insertSell" parameterType="SellVO">

@@ -142,9 +142,6 @@ aside li h3 {
 main header {
 	height: 110px;
 	padding: 30px 20px 30px 40px;
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
 }
 
 main header>* {
@@ -333,21 +330,8 @@ footer {
   border-radius: 5px;
 }
 
-.back-button {
-	background: none;
-	border: none;
-	cursor: pointer;
-	display: flex; /* Ensure button can contain flex items */
-	align-items: center; /* Center items vertically */
-	width: 50px;
-	height: 50px;	
-}
 
-.back-button img {
-	max-height: 100%; /* Ensure image doesn't exceed button height */
-	max-width: 100%; /* Ensure image doesn't exceed button width */
-	object-fit: contain; /* Fit the image within the button dimensions */
-}
+
 
 
 </style>
@@ -399,17 +383,16 @@ footer {
 	    });
 	    
 	    $('#messageInput').keydown(function(event) {
-	        if (event.keyCode === 13 && !event.shiftKey) {
+	        if (event.key === 'Enter' && !event.shiftKey) {
 	            event.preventDefault();
 	            sendMessage();
 	        }
 	    });
-	    
 	});
-	
-
+	//qkd
 	function init(no){
-		socket = new SockJS('${pageContext.request.contextPath }/endpoint');
+		
+	    socket = new SockJS('${pageContext.request.contextPath }/endpoint');
 	    stompClient = Stomp.over(socket);
 
 	    stompClient.connect({}, function(frame) {
@@ -539,10 +522,8 @@ footer {
 		</aside>
 		<main id="chatView">
 			<header>
-				<div style="flex-grow: 1;"></div>
-				<button class="back-button" onclick="history.back()">
-					<img src="resources/assets/img/back.png" alt="뒤로가기">
-				</button>
+			
+			
 			</header>
 			<ul id="chat" class="scrollArea1">
 				

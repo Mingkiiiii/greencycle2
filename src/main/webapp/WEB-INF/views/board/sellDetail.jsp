@@ -107,7 +107,7 @@
                                             <input type="hidden" name="userId" value="${sessionscope.userId}">
                                             <input type="hidden" name="salesNo" value="${sell.salesNo}">
                                             <input type="hidden" name="roomNo" value="${sell.salesNo}">
-                                            <button type="submit" class="btn btn-primary">판매자와 채팅하러 가기</button>
+                                            <button type="submit" class="btn btn-primary">채팅하기</button>
                                         </form>
                                     </div>
                                 </c:otherwise>

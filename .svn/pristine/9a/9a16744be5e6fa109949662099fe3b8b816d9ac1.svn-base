@@ -224,33 +224,6 @@ element.style {
 	text-overflow: ellipsis;
 	display: block;
 }
-
-@media ( max-width : 800px) {
-	.input-group {
-		position: relative;
-		display: -ms-flexbox;
-		display: flex;
-		-ms-flex-wrap: wrap;
-		flex-wrap: wrap;
-		-ms-flex-align: stretch;
-		align-items: stretch;
-		width: 100%;
-		margin-top: 2%;
-		gap: 9px !important;
-		width: 55% !important;
-		margin-left: 10% !important;
-	}
-	.shadow-none {
-		box-shadow: none !important;
-		width: 146% !important;
-	}
-	.btn-primary {
-    color: #fff;
-    background-color: #007bff;
-    border-color: #007bff;
-    margin-left: 0% !important;
-}
-}
 </style>
 </head>
 <jsp:include page="/WEB-INF/inc/top.jsp"></jsp:include>
@@ -267,7 +240,7 @@ element.style {
 				<input type="hidden" name="curPage" value="${searchVO.curPage}">
 				<input type="hidden" name="rowSizePerPage" value="${searchVO.rowSizePerPage}">
 				<input type="hidden" name="searchGroup" id="searchGroup" value="${searchVO.searchGroup }">
-				<div class="input-group" style="margin-top: 2%;">
+				<div class="input-group" style="margin-top: 2%; gap: 41px!important;"">
 					<div class="col-sm-2">
 						<select id="id_searchType" name="searchType" class="form-control input-sm">
 							<option value="N" ${searchVO.searchType eq "N" ? "selected='selected'" : "" }>제목</option>
@@ -276,10 +249,10 @@ element.style {
 						</select>
 					</div>
 					<div class="col-sm-6">
-						<input class="form-control shadow-none search" name="searchWord" type="search" placeholder="검색어" aria-label="search" value="${searchVO.searchWord}">
+						<input class="form-control shadow-none search" name="searchWord" type="search" placeholder="검색어" aria-label="search" value="${searchVO.searchWord}" style="width: 125% !important;">
 					</div>
 					<div class="col-sm-2 text-right">
-						<button type="submit" class="btn btn-primary form-control">
+						<button type="submit" class="btn btn-primary form-control" style="width: 68% !important;">
 							<i class="fa fa-search"></i>
 						</button>
 					</div>
@@ -419,18 +392,19 @@ element.style {
 		let search_form = $("form[name='search']");
 		let cur_page = search_form.find('input[name="curPage"]');
 		// 스위치 이벤트 리스너 추가
-		document.getElementById('thumb_switch').addEventListener('change',
+		document.getElementById('thumb_switch').addEventListener(
+				'change',
 				function() {
-					// 					var viewContainer = document.getElementById('view-container');
-					// 					var sharingContainer = document.getElementById('sharing-container');
+// 					var viewContainer = document.getElementById('view-container');
+// 					var sharingContainer = document.getElementById('sharing-container');
 					if (this.checked) {
-						// 						viewContainer.style.display = 'block'; // 제품 목록 보이기
-						// 						sharingContainer.style.display = 'none'; // sharing 보드 숨기기
+// 						viewContainer.style.display = 'block'; // 제품 목록 보이기
+// 						sharingContainer.style.display = 'none'; // sharing 보드 숨기기
 						$("#searchGroup").val("판매중");
 					} else {
-						// 						viewContainer.style.display = 'none'; // 제품 목록 숨기기
-						// 						sharingContainer.style.display = 'block'; // sharing 보드 보이기
-
+// 						viewContainer.style.display = 'none'; // 제품 목록 숨기기
+// 						sharingContainer.style.display = 'block'; // sharing 보드 보이기
+	
 						$("#searchGroup").val("나눔♥");
 					}
 					cur_page.val(1);
@@ -438,28 +412,29 @@ element.style {
 				});
 
 		// 초기 상태 설정
-		// 		document.addEventListener('DOMContentLoaded',
-		// 				function() {
-		// 					var viewContainer = document
-		// 							.getElementById('view-container');
-		// 					var sharingContainer = document
-		// 							.getElementById('sharing-container');
-		// 					viewContainer.style.display = 'none'; // 제품 목록 숨기기
-		// 					sharingContainer.style.display = 'block'; // sharing 보드 보이기
-		// 				});
+// 		document.addEventListener('DOMContentLoaded',
+// 				function() {
+// 					var viewContainer = document
+// 							.getElementById('view-container');
+// 					var sharingContainer = document
+// 							.getElementById('sharing-container');
+// 					viewContainer.style.display = 'none'; // 제품 목록 숨기기
+// 					sharingContainer.style.display = 'block'; // sharing 보드 보이기
+// 				});
 
-		$(document).ready(
-				function() {
-
-					if ($("#searchGroup").val() != "나눔♥") {
+		
+		$(document).ready(function() {
+			
+					if($("#searchGroup").val()!= "나눔♥"){
 						$('#thumb_switch').prop('checked', true);
 						$("#view-container").show();
 						$("#sharing-container").hide();
-					} else {
+					}else{
 						$("#view-container").hide();
 						$("#sharing-container").show();
 					}
-
+					
+					
 					$("#id_rowSizePerPage").change(
 							function() {
 								cur_page.val(1);

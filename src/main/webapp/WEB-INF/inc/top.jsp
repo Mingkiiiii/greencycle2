@@ -68,96 +68,109 @@
 <style>
 /* 햄버거 메뉴 스타일 */
 .menu-trigger {
-    display: none;
-    cursor: pointer;
+   display: none;
+   cursor: pointer;
 }
 
 .menu-trigger span {
-    display: block;
-    width: 25px;
-    height: 3px;
-    margin: 5px auto;
-    background-color: #333;
+   display: block;
+   width: 25px;
+   height: 3px;
+   margin: 5px auto;
+   background-color: #333;
 }
 
-@media (max-width: 767px) {
-    .menu-trigger {
-        display: block;
-    }
+@media ( max-width : 767px) {
+   .menu-trigger {
+      display: block;
+   }
+   .nav {
+      display: none;
+      text-align: center;
+   }
+   .nav.show {
+      display: block;
+   }
+}
 
-    .nav {
-        display: none;
-        text-align: center;
-    }
-
-    .nav.show {
-        display: block;
-    }
+#dama-icon {
+    position: fixed;
+    bottom: 5%;
+    left: 3%;
+    width: 100px;
+    height: 100px;
+    cursor: pointer;
+    z-index: 1000;
+    border: #ffa5008c solid 3px;
+    border-radius: 60%;
+    background: #ffa5008c;
 }
 </style>
 
 <!-- ***** Header Area Start ***** -->
 <header class="header-area header-sticky">
-	<div class="container" style="text-align: center !important;">
-		<div class="row">
-			<div class="col-12">
-				<nav class="main-nav">
-                    <!-- ***** Logo Start ***** -->
-                    <a href="/my" class="logo">
-                        <img src="assets/images/logo.png" alt="Logo">
-                    </a>
-                    <!-- ***** Logo End ***** -->
-                    <!-- ***** Menu Start ***** -->
-                    <ul class="nav">
-<!--                         <li class="scroll-to-section" style="text-align: center !important;"><a href=""></a></li> -->
-<!--                         <li class="submenu"><a href="javascript:;">나눔/판매</a> -->
-<!--                             <ul> -->
-<%--                                 <li><a href="<c:url value='/about' />">About Us</a></li> --%>
-<%--                                 <li><a href="<c:url value='/sharingView' />">나눔 상품</a></li> --%>
-                                <li><a href="<c:url value='/sellView' />">중고 장터</a></li>
-<%--                                 <li><a href="<c:url value='/qna' />">Contact Us</a></li> --%>
-<!--                             </ul> -->
-<!--                         </li> -->
-                        <li class="submenu"><a href="javascript:;">게시판 및 서비스</a>
-                            <ul>
-                                <li><a href="<c:url value='/csView' />">1:1문의</a></li>
-                                <li><a href="<c:url value='/FAQ' />">자주 물어보는 질문</a></li>
-                                <li><a href="<c:url value='/user_board' />">정보 및 인증게시판</a></li>
-                            </ul>
-                        </li>
-                        <c:if test="${sessionScope.login == null}">
-                            <li><a href="<c:url value='/loginView' />" class="logo">로그인</a></li>
-                            <li><a href="/my/registView">회원가입</a></li>
-                        </c:if>
-                        <c:if test="${sessionScope.login != null}">
-                            <li class="scroll-to-section"><a href="<c:url value='/start' />" class="logo">게임하러가기</a></li>
-                            <li class="scroll-to-section"><a href="<c:url value='/mypageView' />" class="logo">${sessionScope.login.userNick } 님</a></li>
-                            <c:if test="${sessionScope.login != null && sessionScope.login.isAdmin eq 'Y'}">
-                                <li class="scroll-to-section"><a href="<c:url value='/memdataView' />">회원 정보 서비스</a></li>
-                            </c:if>
-                            <li><a href="<c:url value='/logoutDo' />">로그아웃</a></li>
-                            <li><a href="<c:url value='/chat' />">채팅</a></li>
-                        </c:if>
-                    </ul>
-                    <a class="menu-trigger">
-                        <span>Menu</span>
-                    </a>
-                    <!-- ***** Menu End ***** -->
-                </nav>
+   <div class="container" style="text-align: center !important;">
+      <div class="row">
+         <div class="col-12">
+            <nav class="main-nav">
+               <!-- ***** Logo Start ***** -->
+               <a href="/my" class="logo">
+                  <img src="assets/images/logo.png" alt="Logo">
+               </a>
+               <!-- ***** Logo End ***** -->
+               <!-- ***** Menu Start ***** -->
+               <ul class="nav">
+                  <!--                         <li class="scroll-to-section" style="text-align: center !important;"><a href=""></a></li> -->
 
-			</div>
-		</div>
+                  <!--                      <ul> -->
+                  <%--                         <li><a href="<c:url value='/about' />">About Us</a></li> --%>
+                  <li><a href="<c:url value='/sellView' />">중고 장터</a></li>
+                  <%--                         <li><a href="<c:url value='/qna' />">Contact Us</a></li> --%>
+                  <!--                      </ul></li> -->
+                  <li class="submenu"><a href="javascript:;">게시판 및 서비스</a>
+                     <ul>
+                        <li><a href="<c:url value='/csView' />">1:1문의</a></li>
+                        <li><a href="<c:url value='/FAQ' />">자주 물어보는 질문</a></li>
+                        <%--                         <li><a href="<c:url value='/user_board' />">정보 및 인증게시판</a></li> --%>
+                     </ul></li>
+                  <c:if test="${sessionScope.login == null}">
+                     <li><a href="<c:url value='/loginView' />" class="logo">로그인</a></li>
+                     <li><a href="/my/registView">회원가입</a></li>
+                  </c:if>
+                  <c:if test="${sessionScope.login != null}">
+                     <li class="scroll-to-section"><a href="<c:url value='/start' />" class="logo">게임하러가기</a></li>
+                     <li class="scroll-to-section"><a href="<c:url value='/mypageView' />" class="logo">${sessionScope.login.userNick } 님</a></li>
+                     <c:if test="${sessionScope.login != null && sessionScope.login.isAdmin eq 'Y'}">
+                        <li class="scroll-to-section"><a href="<c:url value='/memdataView' />">회원 정보 서비스</a></li>
+                     </c:if>
+                     <li><a href="<c:url value='/logoutDo' />">로그아웃</a></li>
+                     <li><a href="<c:url value='/chat' />">채팅</a></li>
 
-	</div>
-	
-	<script>
-    $(document).ready(function() {
-        $('.menu-trigger').click(function() {
+                     <img id="dama-icon" src="assets/images/dama_icon.png" alt="Dama Icon">
+                  </c:if>
+               </ul>
+               <a class="menu-trigger">
+                  <span>Menu</span>
+               </a>
+               <!-- ***** Menu End ***** -->
+            </nav>
+
+         </div>
+      </div>
+
+   </div>
+
+   <script>
+      $(document).ready(function() {
+         $('.menu-trigger').click(function() {
             $('.nav').toggleClass('show');
-        });
-    });
-	
-	</script>
+         });
+
+         $('#dama-icon').click(function() {
+            window.location.href = '/my/start';
+         });
+      });
+   </script>
 
 </header>
 <!-- ***** Header Area End ***** -->

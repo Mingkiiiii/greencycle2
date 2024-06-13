@@ -102,372 +102,72 @@ keyframes moveLeftRight { 0% {
 25%
 {
 transform
-
-
-
-
-
-
-
-
-
-
-
-
 :
-
-
-
-
-
-
  
-
-
-
-
-
-
 translateX
-
-
-
-
-
-
-
-
-
-
-
-
-(
-calc
-
-
-
-
-
-
-
-
-
-
-(100%
+(calc(100%
+ 
 -
 90
 px
-
-
-
-
-
-
-
-
-
-
-
-
 ))
+ 
 scaleX
-
-
-
-
-
-
-
-
-
-
-
-
 (1);
+ 
 } /* 오른쪽으로 이동 */
 30%
 {
 transform
-
-
-
-
-
-
-
-
-
-
-
-
 :
-
-
-
-
-
-
  
-
-
-
-
-
-
 translateX
-
-
-
-
-
-
-
-
-
-
-
-
-(
-calc
-
-
-
-
-
-
-
-
-
-
-(100%
+(calc(100%
+ 
 -
 90
 px
-
-
-
-
-
-
-
-
-
-
-
-
 ))
+ 
 scaleX
-
-
-
-
-
-
-
-
-
-
-
-
 (-1);
+ 
 } /* 오른쪽에서 좌우 반전 */
 75%
 {
 transform
-
-
-
-
-
-
-
-
-
-
-
-
 :
-
-
-
-
-
-
  
-
-
-
-
-
-
 translateX
-
-
-
-
-
-
-
-
-
-
-
-
-(-70
-px
-
-
-
-
-
-
-
-
-
-
-)
+(-70px)
+ 
 scaleX
-
-
-
-
-
-
-
-
-
-
-
-
 (-1);
+ 
 } /* 왼쪽으로 이동 */
 80%
 {
 transform
-
-
-
-
-
-
-
-
-
-
-
-
 :
-
-
-
-
-
-
  
-
-
-
-
-
-
 translateX
-
-
-
-
-
-
-
-
-
-
-
-
-(-70
-px
-
-
-
-
-
-
-
-
-
-
-)
+(-70px)
+ 
 scaleX
-
-
-
-
-
-
-
-
-
-
-
-
 (1);
+ 
 } /* 왼쪽에서 좌우 반전 */
 100%
 {
 transform
-
-
-
-
-
-
-
-
-
-
-
-
 :
-
-
-
-
-
-
  
-
-
-
-
-
-
 translateX
-
-
-
-
-
-
-
-
-
-
-
-
 (0)
+ 
 scaleX
-
-
-
-
-
-
-
-
-
-
-
-
 (1);
+ 
 } /* 기본 상태 */
 }
 .character-img.character {
@@ -487,58 +187,11 @@ keyframes moveUpDown { 0%, 100% {
 50%
 {
 transform
-
-
-
-
-
-
-
-
-
-
-
-
 :
-
-
-
-
-
-
  
-
-
-
-
-
-
 translateY
-
-
-
-
-
-
-
-
-
-
-
-
-(-10
-px
-
-
-
-
-
-
-
-
-
-
-);
+(-10px);
+ 
 } /* 50% 시점에 위로 10px 이동 */
 }
 .back_ground_cont::before {
@@ -1007,15 +660,15 @@ px
 }
 
 #barContainer {
-	position: absolute;
-	top: 0;
-	left: -50%;
-	transform: translateX(-41%);
-	width: 90%;
-	z-index: 5;
-	margin-top: 3%;
-	display: block;
-}
+        position: absolute;
+        top: 0;
+        left: -50%;
+        transform: translateX(-41%);
+        width: 90%;
+        z-index: 5;
+        margin-top: 3%;
+        display: block;
+    }
 
 #barContainer img {
 	display: block;
@@ -1140,726 +793,105 @@ head
 >
 <%@
 page
-
-
-
-
-
-
  
-
-
-
-
-
-
 language
-
-
-
-
-
-
-
-
-
-
-
-
-="
-java
-
-
-
-
-
-
-
-
-
-
-"
-contentType
-
-
-
-
-
-
-
-
-
-
-
-
-="
-text
-/html;
-
-
-
-
-
-
+="java"
  
-
-
-
-
-
-
+contentType
+="text/html;
+ 
 charset
-
-
-
-
-
-
-
-
-
-
-
-
-=
-UTF-8
-
-
-
-
-
-
-
-
-
-
-"%
+=UTF-8"%
 >
 <%@
 taglib
-
-
-
-
-
-
  
-
-
-
-
-
-
 uri
-
-
-
-
-
-
-
-
-
-
-
-
-="
-http
-
-
-
-
-
-
-
-
-
-
-
-
+="http
 :
 //java
-
-
-
-
-
-
-
-
-
-
-
-
 .sun
-
-
-
-
-
-
-
-
-
-
-
-
 .com
 /jsp/jstl/core"
-
-
-
-
-
-
  
-
-
-
-
-
-
 prefix
-
-
-
-
-
-
-
-
-
-
-
-
-="
-c
-
-
-
-
-
-
-
-
-
-
-"%
+="c"%
 >
 <!
 DOCTYPE
-
-
-
-
-
-
  
-
-
-
-
-
-
 html
 >
 <
 html
-
-
-
-
-
-
  
-
-
-
-
-
-
 lang
-
-
-
-
-
-
-
-
-
-
-
-
-="
-en
-
-
-
-
-
-
-
-
-
-
-"
+="en"
 >
 <
 head
 >
 <
 meta
-
-
-
-
-
-
  
-
-
-
-
-
-
 charset
-
-
-
-
-
-
-
-
-
-
-
-
-="
-UTF-8
-
-
-
-
-
-
-
-
-
-
-"
+="UTF-8"
 >
 <
 meta
-
-
-
-
-
-
  
-
-
-
-
-
-
 name
-
-
-
-
-
-
-
-
-
-
-
-
-="
-viewport
-
-
-
-
-
-
-
-
-
-
-"
+="viewport"
+ 
 content
-
-
-
-
-
-
-
-
-
-
-
-
-="
-width
-
-
-
-
-
-
-
-
-
-
-=
-device-width
+="width=device-width
 ,
 initial-scale
-
-
-
-
-
-
-
-
-
-
-
-
 =1
 .0
-
-
-
-
-
-
-
-
-
-
-
-
 "
 >
 <
 title
 >
 Game
-
-
-
-
-
-
  
-
-
-
-
-
-
 Main
-
-
-
-
-
-
-
-
-
-
-
-
-</
-title
+</title
 >
 <
 link
-
-
-
-
-
-
  
-
-
-
-
-
-
 rel
-
-
-
-
-
-
-
-
-
-
-
-
-="
-stylesheet
-
-
-
-
-
-
-
-
-
-
-"
-href
-
-
-
-
-
-
-
-
-
-
-
-
-="<
-c
-
-
-
-
-
-
-
-
-
-
-
-
-:url
-
-
-
-
-
-
+="stylesheet"
  
-
-
-
-
-
-
+href
+="<c
+:url
+ 
 value
-
-
-
-
-
-
-
-
-
-
-
-
-='/
-css
-/style_game
-
-
-
-
-
-
-
-
-
-
-
-
+='/css/style_game
 .css
-
-
-
-
-
-
-
-
-
-
-
-
 '
 /
 >
 ">
 <
 link
-
-
-
-
-
-
  
-
-
-
-
-
-
 rel
-
-
-
-
-
-
-
-
-
-
-
-
-="
-stylesheet
-
-
-
-
-
-
-
-
-
-
-"
+="stylesheet"
+ 
 type
-
-
-
-
-
-
-
-
-
-
-
-
-="
-text
-/css"
-
-
-
-
-
-
+="text/css"
  
-
-
-
-
-
-
 href
-
-
-
-
-
-
-
-
-
-
-
-
-="<
-c
-
-
-
-
-
-
-
-
-
-
-
-
+="<c
 :url
-
-
-
-
-
-
  
-
-
-
-
-
-
 value
-
-
-
-
-
-
-
-
-
-
-
-
-='/
-assets
-/css/style_game
-
-
-
-
-
-
-
-
-
-
-
-
+='/assets/css/style_game
 .css
-
-
-
-
-
-
-
-
-
-
-
-
 '
 /
 >
@@ -1915,7 +947,7 @@ body, h1, p, .character-label span {
 
 .menu-container {
 	position: absolute;
-	bottom: 47.5%;
+	bottom: 13.5%;
 	display: flex;
 	justify-content: space-around;
 	padding-bottom: 10px;
@@ -1970,372 +1002,72 @@ keyframes moveLeftRight { 0% {
 25%
 {
 transform
-
-
-
-
-
-
-
-
-
-
-
-
 :
-
-
-
-
-
-
  
-
-
-
-
-
-
 translateX
-
-
-
-
-
-
-
-
-
-
-
-
-(
-calc
-
-
-
-
-
-
-
-
-
-
-(100%
+(calc(100%
+ 
 -
 90
 px
-
-
-
-
-
-
-
-
-
-
-
-
 ))
+ 
 scaleX
-
-
-
-
-
-
-
-
-
-
-
-
 (1);
+ 
 } /* 오른쪽으로 이동 */
 30%
 {
 transform
-
-
-
-
-
-
-
-
-
-
-
-
 :
-
-
-
-
-
-
  
-
-
-
-
-
-
 translateX
-
-
-
-
-
-
-
-
-
-
-
-
-(
-calc
-
-
-
-
-
-
-
-
-
-
-(100%
+(calc(100%
+ 
 -
 90
 px
-
-
-
-
-
-
-
-
-
-
-
-
 ))
+ 
 scaleX
-
-
-
-
-
-
-
-
-
-
-
-
 (-1);
+ 
 } /* 오른쪽에서 좌우 반전 */
 75%
 {
 transform
-
-
-
-
-
-
-
-
-
-
-
-
 :
-
-
-
-
-
-
  
-
-
-
-
-
-
 translateX
-
-
-
-
-
-
-
-
-
-
-
-
-(-70
-px
-
-
-
-
-
-
-
-
-
-
-)
+(-70px)
+ 
 scaleX
-
-
-
-
-
-
-
-
-
-
-
-
 (-1);
+ 
 } /* 왼쪽으로 이동 */
 80%
 {
 transform
-
-
-
-
-
-
-
-
-
-
-
-
 :
-
-
-
-
-
-
  
-
-
-
-
-
-
 translateX
-
-
-
-
-
-
-
-
-
-
-
-
-(-70
-px
-
-
-
-
-
-
-
-
-
-
-)
+(-70px)
+ 
 scaleX
-
-
-
-
-
-
-
-
-
-
-
-
 (1);
+ 
 } /* 왼쪽에서 좌우 반전 */
 100%
 {
 transform
-
-
-
-
-
-
-
-
-
-
-
-
 :
-
-
-
-
-
-
  
-
-
-
-
-
-
 translateX
-
-
-
-
-
-
-
-
-
-
-
-
 (0)
+ 
 scaleX
-
-
-
-
-
-
-
-
-
-
-
-
 (1);
+ 
 } /* 기본 상태 */
 }
 .character-img.character {
@@ -2355,58 +1087,11 @@ keyframes moveUpDown { 0%, 100% {
 50%
 {
 transform
-
-
-
-
-
-
-
-
-
-
-
-
 :
-
-
-
-
-
-
  
-
-
-
-
-
-
 translateY
-
-
-
-
-
-
-
-
-
-
-
-
-(-10
-px
-
-
-
-
-
-
-
-
-
-
-);
+(-10px);
+ 
 } /* 50% 시점에 위로 10px 이동 */
 }
 .back_ground_cont::before {
@@ -2839,21 +1524,21 @@ px
 .info-icon {
 	margin-right: 11px;
 	position: absolute;
-	width: 19% !important;
+	width: 20% !important;
 	height: 52% !important;
-	margin-left: -8% !important;
+	margin-left: -9% !important;
 	z-index: -100;
-	margin-top: -48%;
+	margin-top: -57.5%;
 }
 
 .hamber-icon {
 	margin-right: 11px;
 	position: absolute;
-	width: 16% !important;
-	height: 60% !important;
-	margin-left: 24% !important;
+	width: 19% !important;
+	height: 66% !important;
+	margin-left: 26% !important;
 	z-index: -100;
-	margin-top: -50%;
+	margin-top: -60.5%;
 }
 
 .info-icon:hover {
@@ -2863,11 +1548,11 @@ px
 .end-icon {
 	margin-right: 11px;
 	position: absolute;
-	width: 16% !important;
-	height: 45% !important;
-	margin-left: -39% !important;
+	width: 20% !important;
+	height: 54% !important;
+	margin-left: -45% !important;
 	z-index: -100;
-	margin-top: -48%;
+	margin-top: -58.5%;
 }
 
 .end-icon:hover {
@@ -2875,15 +1560,15 @@ px
 }
 
 #barContainer {
-	position: absolute;
-	top: 0;
-	left: -50%;
-	transform: translateX(-41%);
-	width: 90%;
-	z-index: 5;
-	margin-top: 3%;
-	display: block;
-}
+        position: absolute;
+        top: 0;
+        left: -50%;
+        transform: translateX(-41%);
+        width: 90%;
+        z-index: 5;
+        margin-top: 3%;
+        display: block;
+    }
 
 #barContainer img {
 	display: block;
@@ -2892,8 +1577,8 @@ px
 .bar-text-hp {
 	position: absolute;
 	top: 50%;
-	left: 425px;
-	transform: translateY(-205%);
+	left: 385px;
+	transform: translateY(-190%);
 	color: black;
 	font-size: 35px;
 	z-index: 28;
@@ -2905,8 +1590,8 @@ px
 .bar-text-coin {
 	position: absolute;
 	top: 50%;
-	left: 425px;
-	transform: translateY(-135%);
+	left: 374px;
+	transform: translateY(-127%);
 	color: black;
 	font-size: 35px;
 	z-index: 28;
@@ -2918,8 +1603,8 @@ px
 .bar-text-food {
 	position: absolute;
 	top: 50%;
-	left: 425px;
-transform: translateY(-64%);
+	left: 385px;
+	transform: translateY(-63%);
 	color: black;
 	font-size: 35px;
 	z-index: 28;
@@ -2931,8 +1616,8 @@ transform: translateY(-64%);
 .bar-text-happy {
 	position: absolute;
 	top: 50%;
-	left: 425px;
-	transform: translateY(6%);
+	left: 385px;
+	transform: translateY(1%);
 	color: black;
 	font-size: 35px;
 	z-index: 28;
@@ -2944,8 +1629,8 @@ transform: translateY(-64%);
 .bar-text-clean {
 	position: absolute;
 	top: 50%;
-	left: 425px;
-	transform: translateY(77%);
+	left: 385px;
+	transform: translateY(64%);
 	color: black;
 	font-size: 35px;
 	z-index: 28;
@@ -2957,8 +1642,8 @@ transform: translateY(-64%);
 .bar-text-medicine {
 	position: absolute;
 	top: 50%;
-	left: 425px;
-	transform: translateY(148%);
+	left: 385px;
+	transform: translateY(128%);
 	color: black;
 	font-size: 35px;
 	z-index: 28;
@@ -2972,9 +1657,9 @@ transform: translateY(-64%);
 	position: absolute;
 	width: 16% !important;
 	height: 48% !important;
-	margin-left: -42% !important;
+	margin-left: -45% !important;
 	z-index: -100;
-	margin-top: -24.5%;
+	margin-top: -36.5%;
 	border: 5px solid black;
 	border-radius: 20px;
 }
@@ -2988,9 +1673,9 @@ transform: translateY(-64%);
 	position: absolute;
 	width: 16% !important;
 	height: 46% !important;
-	margin-left: 23.5% !important;
+	margin-left: 26.5% !important;
 	z-index: -100;
-	margin-top: -24.5%;
+	margin-top: -36.5%;
 	border: 5px solid black;
 	border-radius: 20px;
 }
@@ -2999,29 +1684,31 @@ transform: translateY(-64%);
 	opacity: 0.7; /* 마우스 호버 시 약간의 투명도 변경 */
 }
 
-#recyclingInfoModal {
+
+#recyclingInfoModal{
 	display: none;
-	position: fixed;
-	z-index: 1000;
-	left: 50%;
-	top: 50%;
-	transform: translate(-50%, -50%);
-	width: 80%;
-	max-width: 400px;
-	background-color: rgba(0, 0, 0, 0.8);
-	padding: 20px;
-	border-radius: 10px;
-	text-align: center;
-	height: 55%;
+    position: fixed;
+    z-index: 1000;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    max-width: 400px;
+    background-color: rgba(0, 0, 0, 0.8);
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    height: 55%;
 }
 
 .modal-content {
-	position: relative;
-	padding: 12%;
-	background-color: rgba(0, 128, 0, 0.8);
-	border-radius: 10px;
-	height: auto;
-	max-height: 48vh;
-	text-align: center;
-}
+        position: relative;
+        padding: 20px;
+        background-color: rgba(0, 128, 0, 0.8);
+        border-radius: 10px;
+        height: auto;
+        max-height: 48vh;
+        text-align: center;
+    }
+
 }

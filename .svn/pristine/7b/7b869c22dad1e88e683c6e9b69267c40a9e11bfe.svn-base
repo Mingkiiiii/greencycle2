@@ -134,7 +134,6 @@ html, body {
 @media ( max-width : 991px) {
 	html, body {
 		overflow-x: hidden;
-		margin-top: 10%;
 	}
 	.mobile-top-fix {
 		margin-top: 30px;
@@ -584,7 +583,6 @@ header
 	}
 	.header-area .main-nav .nav li:first-child {
 		border-top: 1px solid #eee;
-		        display: inline-block;
 	}
 	.header-area.header-sticky .nav {
 		margin-top: 100px !important;
@@ -2345,15 +2343,11 @@ opacity
 
 
 
-
-
 :
 
 
 
-
  
-
 
 
 
@@ -2368,10 +2362,7 @@ opacity
 
 
 
-
-
 :
-
 
 
 
@@ -2379,10 +2370,7 @@ opacity
 
 
 
-
 scale
-
-
 
 
 
@@ -2397,10 +2385,7 @@ transform
 
 
 
-
-
 :
-
 
 
 
@@ -2408,10 +2393,7 @@ transform
 
 
 
-
 scale
-
-
 
 
 
@@ -2426,15 +2408,11 @@ opacity
 
 
 
-
-
 :
 
 
 
-
  
-
 
 
 
@@ -2456,15 +2434,11 @@ opacity
 
 
 
-
-
 :
 
 
 
-
  
-
 
 
 
@@ -2479,15 +2453,11 @@ opacity
 
 
 
-
-
 :
 
 
 
-
  
-
 
 
 

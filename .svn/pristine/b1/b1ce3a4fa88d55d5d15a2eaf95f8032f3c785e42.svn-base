@@ -77,11 +77,7 @@ tabindex
 
 
 
-
-
 :focus
-
-
 
 
 
@@ -89,18 +85,14 @@ tabindex
 :not
 
 
-
  
-
 
 
 (
 :focus-visible
 
 
-
  
-
 
 
 ){
@@ -109,21 +101,15 @@ outline
 
 
 
-
-
 :
-
 
 
  
 
 
-
 0
 !
 important
-
-
 
 
 
@@ -224,14 +210,10 @@ a
 
 
 
-
-
 :not
 
 
-
  
-
 
 
 (
@@ -240,18 +222,14 @@ href
 ]
 
 
-
  
-
 
 
 )
 :not
 
 
-
  
-
 
 
 (
@@ -260,9 +238,7 @@ class
 ]
 
 
-
  
-
 
 
 ){
@@ -271,19 +247,13 @@ color
 
 
 
-
-
 :
-
 
 
  
 
 
-
 inherit
-
-
 
 
 
@@ -294,19 +264,13 @@ text-decoration
 
 
 
-
-
 :
-
 
 
  
 
 
-
 none
-
-
 
 
 
@@ -412,23 +376,17 @@ button
 
 
 
-
-
 :not
 
 
-
  
-
 
 
 (
 :disabled
 
 
-
  
-
 
 
 ),
@@ -441,23 +399,17 @@ reset
 
 
 
-
-
 :not
 
 
-
  
-
 
 
 (
 :disabled
 
 
-
  
-
 
 
 ),
@@ -470,24 +422,18 @@ submit
 
 
 
-
-
 :not
-
 
 
 
 	
 
 
-
 (
 :disabled
 
 
-
  
-
 
 
 ),
@@ -496,23 +442,17 @@ button
 
 
 
-
-
 :not
 
 
-
  
-
 
 
 (
 :disabled
 
 
-
  
-
 
 
 ){
@@ -521,19 +461,13 @@ cursor
 
 
 
-
-
 :
-
 
 
  
 
 
-
 pointer
-
-
 
 
 
@@ -711,23 +645,17 @@ hr {
 
 
 
-
-
 :not
 
 
-
  
-
 
 
 (
 :last-child
 
 
-
  
-
 
 
 ){
@@ -736,19 +664,13 @@ margin-right
 
 
 
-
-
 :
-
 
 
  
 
 
-
 .5rem
-
-
 
 
 
@@ -2835,41 +2757,31 @@ textarea.form-control {
 
 
 
-
-
 :not
 
 
-
  
-
 
 
 (
 :disabled
 
 
-
  
-
 
 
 )
 :not
 
 
-
  
-
 
 
 (
 .disabled
 
 
-
  
-
 
 
 ){
@@ -2878,19 +2790,13 @@ cursor
 
 
 
-
-
 :
-
 
 
  
 
 
-
 pointer
-
-
 
 
 
@@ -2905,9 +2811,7 @@ a.btn.disabled, fieldset:disabled a.btn {
 .btn-primary {
 	color: #fff;
 	background-color: #007bff;
-	border-color: #007bff;
-	    margin-left: 92%;
-	
+	border-color: #007bff
 }
 
 .btn-primary:hover {
@@ -3547,23 +3451,17 @@ input[type=button].btn-block, input[type=reset].btn-block, input[type=submit].bt
 
 
 
-
-
 :not
 
 
-
  
-
 
 
 (
 .show
 
 
-
  
-
 
 
 ){
@@ -3572,14 +3470,10 @@ opacity
 
 
 
-
-
 :
 
 
-
  
-
 
 
 0
@@ -3589,23 +3483,17 @@ opacity
 
 
 
-
-
 :not
 
 
-
  
-
 
 
 (
 .show
 
 
-
  
-
 
 
 ){
@@ -3614,19 +3502,13 @@ display
 
 
 
-
-
 :
-
 
 
  
 
 
-
 none
-
-
 
 
 
@@ -3936,23 +3818,17 @@ none
 
 
 
-
-
 :not
 
 
-
  
-
 
 
 (
 :first-child
 
 
-
  
-
 
 
 ),
@@ -3963,14 +3839,10 @@ none
 
 
 
-
-
 :not
 
 
-
  
-
 
 
 (
@@ -3978,9 +3850,7 @@ none
 
 
 
-
 	
-
 
 
 ){
@@ -3989,20 +3859,14 @@ margin-left
 
 
 
-
-
 :
-
 
 
  
 
 
-
 -1
 px
-
-
 
 
 
@@ -4017,23 +3881,17 @@ px
 
 
 
-
-
 :not
 
 
-
  
-
 
 
 (
 :last-child
 
 
-
  
-
 
 
 )>
@@ -4046,14 +3904,10 @@ px
 
 
 
-
-
 :not
 
 
-
  
-
 
 
 (
@@ -4061,27 +3915,21 @@ px
 
 
 
-
 	
-
 
 
 )
 :not
 
 
-
  
-
 
 
 (
 .dropdown-toggle
 
 
-
  
-
 
 
 ){
@@ -4090,14 +3938,10 @@ border-top-right-radius
 
 
 
-
-
 :
 
 
-
  
-
 
 
 0;
@@ -4106,14 +3950,10 @@ border-bottom-right-radius
 
 
 
-
-
 :
 
 
-
  
-
 
 
 0
@@ -4125,23 +3965,17 @@ border-bottom-right-radius
 
 
 
-
-
 :not
 
 
-
  
-
 
 
 (
 :first-child
 
 
-
  
-
 
 
 )>
@@ -4154,14 +3988,10 @@ border-bottom-right-radius
 
 
 
-
-
 :not
 
 
-
  
-
 
 
 (
@@ -4169,9 +3999,7 @@ border-bottom-right-radius
 
 
 
-
 	
-
 
 
 ){
@@ -4180,14 +4008,10 @@ border-top-left-radius
 
 
 
-
-
 :
 
 
-
  
-
 
 
 0;
@@ -4196,14 +4020,10 @@ border-bottom-left-radius
 
 
 
-
-
 :
 
 
-
  
-
 
 
 0
@@ -4254,23 +4074,17 @@ border-bottom-left-radius
 
 
 
-
-
 :not
 
 
-
  
-
 
 
 (
 :first-child
 
 
-
  
-
 
 
 ),
@@ -4281,24 +4095,18 @@ border-bottom-left-radius
 
 
 
-
-
 :not
-
 
 
 
 	
 
 
-
 (
 :first-child
 
 
-
  
-
 
 
 ){
@@ -4307,20 +4115,14 @@ margin-top
 
 
 
-
-
 :
-
 
 
  
 
 
-
 -1
 px
-
-
 
 
 
@@ -4335,23 +4137,17 @@ px
 
 
 
-
-
 :not
 
 
-
  
-
 
 
 (
 :last-child
 
 
-
  
-
 
 
 )>
@@ -4364,41 +4160,31 @@ px
 
 
 
-
-
 :not
 
 
-
  
-
 
 
 (
 :last-child
 
 
-
  
-
 
 
 )
 :not
 
 
-
  
-
 
 
 (
 .dropdown-toggle
 
 
-
  
-
 
 
 ){
@@ -4407,14 +4193,10 @@ border-bottom-right-radius
 
 
 
-
-
 :
 
 
-
  
-
 
 
 0;
@@ -4423,14 +4205,10 @@ border-bottom-left-radius
 
 
 
-
-
 :
 
 
-
  
-
 
 
 0
@@ -4442,23 +4220,17 @@ border-bottom-left-radius
 
 
 
-
-
 :not
 
 
-
  
-
 
 
 (
 :first-child
 
 
-
  
-
 
 
 )>
@@ -4471,23 +4243,17 @@ border-bottom-left-radius
 
 
 
-
-
 :not
 
 
-
  
-
 
 
 (
 :first-child
 
 
-
  
-
 
 
 ){
@@ -4496,14 +4262,10 @@ border-top-left-radius
 
 
 
-
-
 :
 
 
-
  
-
 
 
 0;
@@ -4512,14 +4274,10 @@ border-top-right-radius
 
 
 
-
-
 :
 
 
-
  
-
 
 
 0
@@ -4544,8 +4302,7 @@ border-top-right-radius
 	flex-wrap: wrap;
 	-ms-flex-align: stretch;
 	align-items: stretch;
-	width: 100%;
-	gap: 41px;
+	width: 100%
 }
 
 .input-group>.custom-file, .input-group>.custom-select, .input-group>.form-control,
@@ -4584,23 +4341,17 @@ border-top-right-radius
 
 
 
-
-
 :not
 
 
-
  
-
 
 
 (
 :last-child
 
 
-
  
-
 
 
 ),
@@ -4611,24 +4362,18 @@ border-top-right-radius
 
 
 
-
-
 :not
-
 
 
 
 	
 
 
-
 (
 :last-child
 
 
-
  
-
 
 
 ){
@@ -4637,14 +4382,10 @@ border-top-right-radius
 
 
 
-
-
 :
 
 
-
  
-
 
 
 0;
@@ -4653,14 +4394,10 @@ border-bottom-right-radius
 
 
 
-
-
 :
 
 
-
  
-
 
 
 0
@@ -4672,23 +4409,17 @@ border-bottom-right-radius
 
 
 
-
-
 :not
 
 
-
  
-
 
 
 (
 :first-child
 
 
-
  
-
 
 
 ),
@@ -4699,24 +4430,18 @@ border-bottom-right-radius
 
 
 
-
-
 :not
-
 
 
 
 	
 
 
-
 (
 :first-child
 
 
-
  
-
 
 
 ){
@@ -4725,14 +4450,10 @@ border-top-left-radius
 
 
 
-
-
 :
 
 
-
  
-
 
 
 0;
@@ -4741,14 +4462,10 @@ border-bottom-left-radius
 
 
 
-
-
 :
 
 
-
  
-
 
 
 0
@@ -5095,15 +4812,11 @@ border-bottom-left-radius
 
 
 
-
-
 [
 multiple
 ]
 ,
 .custom-select
-
-
 
 
 
@@ -5115,14 +4828,10 @@ size
 
 
 
-
-
 :not
 
 
-
  
-
 
 
 (
@@ -5133,9 +4842,7 @@ size
 ]
 
 
-
  
-
 
 
 ){
@@ -5144,19 +4851,13 @@ height
 
 
 
-
-
 :
-
 
 
  
 
 
-
 auto
-
-
 
 
 
@@ -5167,19 +4868,13 @@ padding-right
 
 
 
-
-
 :
-
 
 
  
 
 
-
 .75rem
-
-
 
 
 
@@ -5190,19 +4885,13 @@ background-image
 
 
 
-
-
 :
-
 
 
  
 
 
-
 none
-
-
 
 
 
@@ -6173,23 +5862,17 @@ none
 	
 	
 	
-	
-	
 	:not
 	
 	
-	
 	 
-	
 	
 	
 	(
 	:last-child
 	
 	
-	
 	 
-	
 	
 	
 	){
@@ -6198,14 +5881,10 @@ none
 	
 	
 	
-	
-	
 	:
 	
 	
-	
 	 
-	
 	
 	
 	0;
@@ -6214,14 +5893,10 @@ none
 	
 	
 	
-	
-	
 	:
 	
 	
-	
 	 
-	
 	
 	
 	0
@@ -6244,23 +5919,17 @@ none
 
 
 
-
-
 :not
 
 
-
  
-
 
 
 (
 :first-child
 
 
-
  
-
 
 
 ){
@@ -6269,14 +5938,10 @@ border-top-left-radius
 
 
 
-
-
 :
 
 
-
  
-
 
 
 0;
@@ -6285,14 +5950,10 @@ border-bottom-left-radius
 
 
 
-
-
 :
 
 
-
  
-
 
 
 0
@@ -6344,23 +6005,17 @@ border-bottom-left-radius
 
 
 
-
-
 :not
 
 
-
  
-
 
 
 (
 :last-of-type
 
 
-
  
-
 
 
 ){
@@ -6369,14 +6024,10 @@ border-bottom
 
 
 
-
-
 :
 
 
-
  
-
 
 
 0;
@@ -6385,14 +6036,10 @@ border-bottom-right-radius
 
 
 
-
-
 :
 
 
-
  
-
 
 
 0;
@@ -6401,14 +6048,10 @@ border-bottom-left-radius
 
 
 
-
-
 :
 
 
-
  
-
 
 
 0
@@ -6420,23 +6063,17 @@ border-bottom-left-radius
 
 
 
-
-
 :not
 
 
-
  
-
 
 
 (
 :first-of-type
 
 
-
  
-
 
 
 ){
@@ -6445,14 +6082,10 @@ border-top-left-radius
 
 
 
-
-
 :
 
 
-
  
-
 
 
 0;
@@ -6461,14 +6094,10 @@ border-top-right-radius
 
 
 
-
-
 :
 
 
-
  
-
 
 
 0
@@ -7407,23 +7036,17 @@ a.close.disabled {
 
 
 
-
-
 :not
 
 
-
  
-
 
 
 (
 :last-child
 
 
-
  
-
 
 
 ){
@@ -7432,19 +7055,13 @@ margin-bottom
 
 
 
-
-
 :
-
 
 
  
 
 
-
 .75rem
-
-
 
 
 
@@ -8056,8 +7673,6 @@ margin-bottom
 
 
 
-
-
 .carousel-item-right
 ,
 .carousel-item-next
@@ -8065,14 +7680,10 @@ margin-bottom
 
 
 
-
-
 :not
 
 
-
  
-
 
 
 (
@@ -8080,9 +7691,7 @@ margin-bottom
 
 
 
-
 	
-
 
 
 ){
@@ -8091,19 +7700,13 @@ margin-bottom
 
 
 
-
-
 :
-
 
 
  
 
 
-
 translateX
-
-
 
 
 
@@ -8114,19 +7717,13 @@ transform
 
 
 
-
-
 :
-
 
 
  
 
 
-
 translateX
-
-
 
 
 
@@ -8138,8 +7735,6 @@ translateX
 
 
 
-
-
 .carousel-item-left
 ,
 .carousel-item-prev
@@ -8147,14 +7742,10 @@ translateX
 
 
 
-
-
 :not
 
 
-
  
-
 
 
 (
@@ -8162,9 +7753,7 @@ translateX
 
 
 
-
 	
-
 
 
 ){
@@ -8173,19 +7762,13 @@ translateX
 
 
 
-
-
 :
-
 
 
  
 
 
-
 translateX
-
-
 
 
 
@@ -8196,19 +7779,13 @@ transform
 
 
 
-
-
 :
-
 
 
  
 
 
-
 translateX
-
-
 
 
 
@@ -8401,11 +7978,7 @@ opacity
 
 
 
-
-
 :
-
-
 
 
 
@@ -8420,11 +7993,7 @@ opacity
 
 
 
-
-
 :none
-
-
 
 
 
@@ -8439,11 +8008,7 @@ transform
 
 
 
-
-
 :none
-
-
 
 
 
@@ -8466,11 +8031,7 @@ opacity
 
 
 
-
-
 :
-
-
 
 
 
@@ -8485,11 +8046,7 @@ opacity
 
 
 
-
-
 :none
-
-
 
 
 
@@ -8504,11 +8061,7 @@ transform
 
 
 
-
-
 :none
-
-
 
 
 
@@ -9900,8 +9453,7 @@ supports ((position:-webkit-sticky ) or (position:sticky )){ .
 }
 
 .shadow-none {
-	box-shadow: none !important;
-    width: 125%;
+	box-shadow: none !important
 }
 
 .w-25 {
@@ -11675,23 +11227,17 @@ a.text-dark:focus, a.text-dark:hover {
 	
 	
 	
-	
-	
 	:not
 	
 	
-	
 	 
-	
 	
 	
 	(
 	.btn
 	
 	
-	
 	 
-	
 	
 	
 	){
@@ -11700,14 +11246,10 @@ a.text-dark:focus, a.text-dark:hover {
 	
 	
 	
-	
-	
 	:
 	
 	
-	
 	 
-	
 	
 	
 	underline
@@ -11715,8 +11257,6 @@ a.text-dark:focus, a.text-dark:hover {
 	
 	
 	
-	
-
 
 
 }
@@ -11796,7 +11336,5 @@ body {
 	color: inherit;
 	border-color: #dee2e6
 }
-
-
 }
 /*# sourceMappingURL=bootstrap.min.css.map */
