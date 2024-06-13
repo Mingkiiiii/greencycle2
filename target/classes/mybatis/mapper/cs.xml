@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.greencycle.my.cs.dao.CsDao">
+
+<!-- Cs Board 검색을 위한 SQL 프래그먼트 -->
+<sql id="CsSearch">
+    <!-- 검색어가 빈 문자열이 아닌 경우 -->
+    <if test="@org.apache.commons.lang3.StringUtils@isNotBlank(searchWord)">
+    <!-- 검색 유형에 따라 다른 조건을 생성 -->
+    <choose>
+        <!-- 검색 유형이 'T' (제목) 인 경우 -->
+        <when test='searchType=="T"' >
+            AND cs_title LIKE '%' || #{searchWord} || '%'
+        </when>
+        <!-- 검색 유형이 'W' (작성자) 인 경우 -->
+        <when test='searchType=="W"'>
+            <!-- user_id를 이용하여 작성자의 닉네임을 가져옴 -->
+            AND a.user_id IN (SELECT user_id FROM users WHERE user_nick LIKE '%' || #{searchWord} || '%')
+        </when>
+        <!-- 검색 유형이 'C' (내용) 인 경우 -->
+        <when test='searchType=="C"'>
+            AND cs_content LIKE '%' || #{searchWord} || '%'
+        </when>
+    </choose>
+</if>
+    <!-- 검색 카테고리가 빈 문자열이 아닌 경우 -->
+    <if test="!@org.apache.commons.lang3.StringUtils@isBlank(searchCategory)">
+        AND cs_category = #{searchCategory}
+    </if>
+</sql>
+
+
+<!-- CsVO 객체 목록을 가져오는 쿼리 -->
+<select id="getCsList" resultType="CsVO" parameterType="CsSearchVO">
+    SELECT *
+    FROM (
+           SELECT t1.*, rownum as rnum
+           FROM (
+               SELECT a.cs_no
+                    , a.cs_title
+                    , a.cs_category
+                    , b.comm_nm as cs_category_nm
+                    , a.user_id
+                    , a.cs_pw
+                    , a.cs_date
+                    , c.user_nick
+                FROM 
+            		CustomerService a
+        		JOIN 
+            		comm_code b ON a.cs_category = b.comm_cd
+        		JOIN 
+         			users c ON a.user_id = c.user_id
+               <!-- Free Board 검색 프래그먼트를 포함 -->
+               <include refid="CsSearch"></include>
+               WHERE a.cs_del_yn = 'N'
+               ORDER BY cs_no desc
+           ) T1
+    )
+    WHERE rnum BETWEEN #{firstRow} AND #{lastRow}
+</select>
+	
+    <!-- CsVO 객체의 총 행 수를 가져오는 쿼리 -->	
+	<select id="getTotalRowCount" parameterType="CsVO" resultType="int">
+		SELECT count(*)
+		FROM CustomerService a
+		WHERE 1=1
+		<!-- Cs 검색 프래그먼트를 포함 -->
+    	<include refid="CsSearch"></include>
+	</select>
+	
+	
+	<select id="getCs" resultType="com.greencycle.my.cs.vo.CsVO" parameterType="com.greencycle.my.cs.vo.CsVO">
+		SELECT   a.cs_no
+		       , a.cs_title
+		       , a.user_id
+		       , a.cs_pw
+		       , a.cs_content
+		       , b.user_nick
+		       , b.is_admin
+		       , TO_CHAR(a.cs_date, 'YYYY/MM/dd') as cs_date
+		FROM
+		CustomerService a, users b
+		WHERE a.user_id = b.user_id
+		AND   a.cs_no = #{csNo}
+		AND	  a.cs_del_yn = 'N'
+		ORDER BY 1	
+	</select>
+	
+		<select id="getCss" resultType="com.greencycle.my.cs.vo.CsVO" parameterType="com.greencycle.my.cs.vo.CsVO">
+		SELECT   a.cs_no
+		       , a.cs_title
+		       , a.user_id
+		       , a.cs_pw
+		       , a.cs_content
+		       , b.user_nick
+		       , TO_CHAR(a.cs_date, 'YYYY/MM/dd') as cs_date
+		FROM
+		CustomerService a, users b
+		WHERE a.user_id = b.user_id
+		AND   a.cs_no = #{csNo}
+		AND	  a.cs_del_yn = 'N'
+		AND	  b.is_admin = 'N'
+		ORDER BY 1	
+	</select>
+	
+	<insert id="cswrite" parameterType="CsVO">
+	
+	INSERT into CustomerService(
+						cs_no
+           			   ,cs_title
+          			   ,user_id
+          			   ,cs_content
+          			   ,cs_date
+          			   ,cs_del_yn
+          			   ,cs_category
+          			   ,cs_pw
+           				)
+				VALUES (
+						(SELECT NVL(MAX(cs_no),0) + 1
+        	 			 FROM CustomerService)
+        				, #{csTitle}
+        				, #{userId}
+        				, #{csContent}
+        				, SYSDATE
+        				, 'N'
+        				, #{csCategory}
+        				, #{csPw}
+        				)
+</insert>
+	
+<select id="getBoardPassword" resultType="java.lang.String"
+		parameterType="int">
+		SELECT cs_pw FROM CustomerService WHERE cs_no = #{csPw}
+</select>
+	
+<update id="updateCs" parameterType="CsVO">
+	UPDATE CustomerService
+	SET cs_title = #{csTitle}
+	   ,cs_content = #{csContent}
+	   ,cs_date = SYSDATE
+	   ,cs_category = #{csCategory}
+	WHERE cs_no = #{csNo}   
+</update>
+
+<update id="delCs" parameterType="int">
+	
+	UPDATE CustomerService
+	SET cs_del_yn = 'Y'
+	WHERE cs_no = #{csNo}
+
+</update>	
+	
+
+</mapper>
+

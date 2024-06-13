@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.greencycle.my.noticeqna.dao.NoticeQnaDao">
+
+	<select id="getFaqs" resultType="com.greencycle.my.noticeqna.vo.NoticeQnaVO">
+		SELECT  a.faq_no
+		       , a.faq_title
+		       , a.user_id
+		       , b.user_nick
+		       , TO_CHAR(a.faq_date, 'YYYY/MM/dd') as faq_date
+		FROM
+		faq a, users b
+		WHERE a.user_id = b.user_id
+		AND	  a.faq_del_yn = 'N'
+		AND	  b.is_admin = 'N'
+		ORDER BY 1	
+	</select>
+	
+	<insert id="writeFaq" parameterType="NoticeQnaVO">
+		INSERT INTO faq (faq_no, faq_title, faq_content, user_id)
+		VALUES ((SELECT NVL(MAX(faq_no),0) + 1
+         FROM faq),#{faqTitle}, #{faqContent}, #{userId})
+ 		
+ 	
+ 	</insert>
+ 	<select id="getFaq" resultType="NoticeQnaVO" parameterType="int">
+		SELECT a.faq_no
+		     , a.faq_title
+		     , a.faq_content
+		     , a.user_id
+		     , b.user_nick
+		     , TO_CHAR(a.faq_date, 'YYYY/MM/dd') as faq_date
+		FROM faq a, users b
+		WHERE a.user_id = b.user_id
+		AND a.faq_no = #{faqNo}
+		AND	  a.faq_del_yn = 'N'
+	</select>
+	
+	<update id="updateFaq" parameterType="NoticeQnaVO">
+		UPDATE faq
+		SET faq_title = #{faqTitle}
+			,faq_content = #{faqContent}
+			,faq_date = SYSDATE
+		WHERE faq_no = #{faqNo}
+	</update>
+	<update id="deleteFaq" parameterType="int">
+		UPDATE faq
+		SET faq_del_yn ='Y'
+		WHERE faq_no = #{faqNo}
+	</update>
+	
+	
+		<!-- Cs Board 검색을 위한 SQL 프래그먼트 -->
+		<sql id="NoticeQnaSearch">
+	    <!-- 검색어가 빈 문자열이 아닌 경우 -->
+	    <if test="@org.apache.commons.lang3.StringUtils@isNotBlank(searchWord)">
+	    <!-- 검색 유형에 따라 다른 조건을 생성 -->
+	    <choose>
+	        <!-- 검색 유형이 'T' (제목) 인 경우 -->
+	        <when test='searchType=="T"' >
+	            AND faq_title LIKE '%' || #{searchWord} || '%'
+	        </when>
+	        <!-- 검색 유형이 'W' (작성자) 인 경우 -->
+	        <when test='searchType=="W"'>
+	            <!-- user_id를 이용하여 작성자의 닉네임을 가져옴 -->
+	            AND a.user_id IN (SELECT user_id FROM users WHERE user_nick LIKE '%' || #{searchWord} || '%')
+	        </when>
+	        <!-- 검색 유형이 'C' (내용) 인 경우 -->
+	        <when test='searchType=="C"'>
+	            AND faq_content LIKE '%' || #{searchWord} || '%'
+	        </when>
+	    </choose>
+	</if>
+	    <!-- 검색 카테고리가 빈 문자열이 아닌 경우 -->
+	    <if test="!@org.apache.commons.lang3.StringUtils@isBlank(searchCategory)">
+	        AND faq_category = #{searchCategory}
+	    </if>
+	</sql>
+	
+	
+	 <!-- FaqVO 객체의 총 행 수를 가져오는 쿼리 -->	
+	<select id="getTotalRowCount" parameterType="NoticeQnaVO" resultType="int">
+		SELECT count(*)
+		FROM faq a
+		WHERE 1=1
+		<!-- Cs 검색 프래그먼트를 포함 -->
+    	<include refid="NoticeQnaSearch"></include>
+	</select>
+	
+
+	<!-- CsVO 객체 목록을 가져오는 쿼리 -->
+	<select id="getFaqList" resultType="NoticeQnaVO" parameterType="NoticeQnaSearchVO">
+	    SELECT *
+	    FROM (
+	           SELECT t1.*, rownum as rnum
+	           FROM (
+	               SELECT a.faq_no
+	                    , a.faq_title
+	                    , a.faq_category
+	                    , a.user_id
+	                    , a.faq_date
+	                    , b.user_nick
+	                FROM 
+	            		Faq a
+	        		JOIN 
+	         			users b ON a.user_id = b.user_id
+	               <!-- Free Board 검색 프래그먼트를 포함 -->
+	               <include refid="NoticeQnaSearch"></include>
+	               WHERE a.faq_del_yn = 'N'
+	               ORDER BY faq_no asc
+	           ) T1
+	    )
+	    WHERE rnum BETWEEN #{firstRow} AND #{lastRow}
+	</select>
+</mapper>
+

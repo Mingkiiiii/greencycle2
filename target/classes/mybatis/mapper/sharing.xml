@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.greencycle.my.sharing.dao.SharingDAO">
+
+    <!-- sell Board 검색을 위한 SQL 프래그먼트 -->
+    <sql id="sharingViewSearch">
+        <!-- 검색어가 빈 문자열이 아닌 경우 -->
+        <if test="@org.apache.commons.lang3.StringUtils@isNotBlank(searchWord)">
+            <!-- 검색 유형에 따라 다른 조건을 생성 -->
+            <choose>
+                <!-- 검색 유형이 'N' (제목) 인 경우 -->
+                <when test='searchType=="N"'>
+                    AND sharings_name LIKE '%' || #{searchWord} || '%'
+                </when>
+                <!-- 검색 유형이 'W' (작성자) 인 경우 -->
+                <when test='searchType=="W"'>
+                    <!-- user_id를 이용하여 작성자의 닉네임을 가져옴 -->
+                    AND a.user_id IN (SELECT user_id FROM users WHERE user_nick LIKE
+                    '%' || #{searchWord} || '%')
+                </when>
+                <!-- 검색 유형이 'C' (내용) 인 경우 -->
+                <when test='searchType=="C"'>
+                    AND sharings_content LIKE '%' || #{searchWord} || '%'
+                </when>
+            </choose>
+        </if>
+        <!-- 검색 카테고리가 빈 문자열이 아닌 경우 -->
+        <if test="!@org.apache.commons.lang3.StringUtils@isBlank(searchCategory)">
+            AND sharings_category = #{searchCategory}
+        </if>
+    </sql>
+
+    <!-- CsVO 객체의 총 행 수를 가져오는 쿼리 -->
+    <select id="getTotalRowCount" parameterType="SharingVO" resultType="int">
+        SELECT count(*)
+        FROM sharings a
+        WHERE 1=1
+        <!-- Cs 검색 프래그먼트를 포함 -->
+        <include refid="sharingViewSearch"></include>
+    </select>
+
+    <!-- SharingVO 객체 목록을 가져오는 쿼리 -->
+    <select id="getSharingsList" resultType="SharingVO" parameterType="SharingSearchVO">
+        SELECT *
+        FROM (
+            SELECT t1.*, rownum as rnum
+            FROM (
+                SELECT a.sharings_no
+                , a.sharings_name
+                , a.sharings_category
+                , a.sharings_image
+                , a.user_id
+                , a.sharings_content
+                , b.user_nick
+                , TO_CHAR(a.sharings_date, 'YYYY/MM/dd') as sharings_date
+                , a.sharings_addr
+                , a.sharings_status
+                FROM sharings a, users b
+                WHERE a.user_id = b.user_id
+                <!-- Free Board 검색 프래그먼트를 포함 -->
+                <include refid="sharingViewSearch" />
+                AND a.sharings_del_yn = 'N'
+                ORDER BY sharings_no asc
+            ) T1
+        )
+        WHERE rnum BETWEEN #{firstRow} AND #{lastRow}
+    </select>
+
+    <!-- 새로운 공유 게시글을 추가하는 쿼리 -->
+    <insert id="insertSharing" parameterType="SharingVO">
+        INSERT INTO sharings
+        (sharings_no, sharings_name, sharings_content, sharings_image,
+        sharings_addr, user_id)
+        VALUES ((SELECT NVL(MAX(sharings_no),0) + 1
+        FROM sharings), #{sharingsName}, #{sharingsContent},
+        #{sharingsImage},
+        #{sharingsAddr}, #{userId})
+    </insert>
+
+    <!-- 특정 공유 게시글을 가져오는 쿼리 -->
+    <select id="getSharing" resultType="SharingVO" parameterType="int">
+        SELECT a.sharings_no
+        , a.sharings_name
+        , a.sharings_content
+        , a.sharings_image
+        , a.user_id
+        , b.user_nick
+        , TO_CHAR(a.sharings_date, 'YYYY/MM/dd') as sharings_date
+        , a.sharings_addr
+        , a.sharings_status
+        FROM sharings a
+        JOIN users b ON a.user_id = b.user_id
+        WHERE a.sharings_no = #{sharingsNo}
+        AND a.sharings_del_yn = 'N'
+    </select>
+
+    <!-- 공유 게시글을 수정하는 쿼리 -->
+    <update id="updateSharing" parameterType="SharingVO">
+        UPDATE sharings
+        SET
+        sharings_name = #{sharingsName}
+        ,sharings_status= #{sharingsStatus}
+        ,sharings_image = #{sharingsImage}
+        ,sharings_content = #{sharingsContent}
+        ,sharings_date = SYSDATE
+        ,sharings_addr = #{sharingsAddr}
+        WHERE sharings_no = #{sharingsNo}
+    </update>
+
+    <!-- 공유 게시글을 삭제하는 쿼리 -->
+    <update id="deleteSharing" parameterType="int">
+        UPDATE sharings
+        SET
+        sharings_del_yn = 'Y'
+        WHERE sharings_no = #{sharingsNo}
+    </update>
+</mapper>
